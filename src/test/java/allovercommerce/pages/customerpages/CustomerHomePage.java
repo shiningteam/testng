@@ -16,5 +16,17 @@ public class CustomerHomePage {
     @FindBy(linkText="My Account")
     public WebElement myAccountButton;
 
+    @FindBy(xpath="//a[@class='login inline-type']")
+    public WebElement signIn;
+
+    @FindBy(id="username")
+    public WebElement username;
+
+    @FindBy(id="password")
+    public WebElement password;
+
+    @FindBy(xpath="//button[@type='submit']")
+    public WebElement submit;
+
 
 }
