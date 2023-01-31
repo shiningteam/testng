@@ -11,6 +11,7 @@ public class CustomerRegisterPage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
+
     @FindBy(id="reg_username")
     public WebElement registerUsernameInput;
 
@@ -25,6 +26,9 @@ public class CustomerRegisterPage {
 
     @FindBy(name="register")
     public WebElement signUpButton;
+
+    @FindBy(xpath = "(//p[@class='submit-status'])[2]")
+    public WebElement alreadyRegisteredMessage;
 
 
 
