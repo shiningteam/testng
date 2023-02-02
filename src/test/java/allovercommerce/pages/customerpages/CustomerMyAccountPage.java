@@ -17,6 +17,12 @@ public class CustomerMyAccountPage {
     @FindBy(xpath="(//a[@class='edit btn btn-link btn-primary btn-underline mb-4'])[2]")
     public WebElement addShippingAddressButton;
 
+    @FindBy(linkText = "Account details")
+    public WebElement accountDetails;
+
+    @FindBy(id="account_first_name")
+    public WebElement accountFirstName;
+
 
 
 
