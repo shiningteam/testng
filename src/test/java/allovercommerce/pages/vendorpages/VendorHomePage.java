@@ -14,9 +14,18 @@ public class VendorHomePage {
     @FindBy(xpath = "(//*[.='Sign In'])[2]")
     public WebElement vendorSignInIcon;
 
-    @FindBy(linkText = "Store Manager")
-    public WebElement storeManagerIcon;
+
 
     @FindBy(xpath = "(//*[.='Sign Out'])[1]")
     public WebElement signOutIcon;
+
+    @FindBy(linkText = "Log out")
+    public WebElement logOutIcon;
+
+
+
+
+
+
+
 }

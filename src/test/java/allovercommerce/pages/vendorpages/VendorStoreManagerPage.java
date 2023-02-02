@@ -30,4 +30,15 @@ public class VendorStoreManagerPage {
 
     @FindBy(id = "sale_price")
     public WebElement salePriceBox;
+
+    @FindBy(id = "wcfm_products_simple_submit_button")
+    public WebElement submitButton;
+
+    @FindBy(className = "wcfm-message")
+    public WebElement warningBox;
+
+    @FindBy(linkText = "Coupons")
+    public WebElement couponsButton;
+
+
 }

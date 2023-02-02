@@ -30,6 +30,15 @@ public class CustomerRegisterPage {
     @FindBy(xpath = "(//p[@class='submit-status'])[2]")
     public WebElement alreadyRegisteredMessage;
 
+    @FindBy(id = "username")
+    public WebElement signInUsernameInput;
+
+    @FindBy(id = "password")
+    public WebElement signInPasswordInput;
+
+    @FindBy(name = "login")
+    public WebElement signInButton;
+
 
 
 
