@@ -14,7 +14,7 @@ public class CustomerMyAccountPage {
     @FindBy(linkText="Addresses")
     public WebElement addressesIcon;
 
-    @FindBy(xpath="(//a[@class='edit btn btn-link btn-primary btn-underline mb-4'])[2]")
+    @FindBy(xpath="(//a[.='Add'])[2]")
     public WebElement addShippingAddressButton;
 
     @FindBy(linkText = "Account details")
