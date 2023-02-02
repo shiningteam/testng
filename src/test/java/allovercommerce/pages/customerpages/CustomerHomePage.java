@@ -26,6 +26,9 @@ public class CustomerHomePage {
     @FindBy(id="password")
     public WebElement password;
 
+    @FindBy(id="rememberme")
+    public WebElement rememberMe;
+
     @FindBy(xpath="//button[@type='submit']")
     public WebElement submit;
 
