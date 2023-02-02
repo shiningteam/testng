@@ -11,12 +11,16 @@ import allovercommerce.utilities.ReusableMethods;
 import com.github.javafaker.Faker;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 public class US_04_TC_01 {
 
-        @Test
-        public void shippingAddressAddTest() {
+        @BeforeMethod
+        public void shippingAddressPage() {
         CustomerHomePage customerHomePage = new CustomerHomePage();
 
         //User goes to https://allovercommerce.com/
@@ -38,18 +42,22 @@ public class US_04_TC_01 {
         JSUtils.scrollDownByJS();
 
         //Click on the "My Account" button
-         ReusableMethods.waitFor(3);
-         customerHomePage.myAccountButton.click();
+        ReusableMethods.waitFor(3);
+        customerHomePage.myAccountButton.click();
 
         //Click on the "Addresses" button
-         CustomerMyAccountPage customerMyAccountPage = new CustomerMyAccountPage();
-         customerMyAccountPage.addressesIcon.click();
+        CustomerMyAccountPage customerMyAccountPage = new CustomerMyAccountPage();
+        customerMyAccountPage.addressesIcon.click();
 
         //Go to the "Shipping Address" and click on the ADD button
         ReusableMethods.waitFor(3);
         customerMyAccountPage.addShippingAddressButton.click();
+        }
+        @Test
+        public void TC_01_test() {
 
         //Enter the First name, Last name, Country/Region, Street address, Town / City, State and ZIP Code.
+        Faker faker = new Faker();
         CustomerShippingAddressPage customerShippingAddressPage = new CustomerShippingAddressPage();
         customerShippingAddressPage.shippingFirstnameInput.sendKeys(faker.name().firstName());
         customerShippingAddressPage.shippingLastnameInput.sendKeys(faker.name().lastName());
@@ -65,13 +73,37 @@ public class US_04_TC_01 {
         select2.selectByVisibleText("California");
 
         customerShippingAddressPage.shippingZipCodeInput.sendKeys(faker.address().zipCode());
-
         //Click on the "Save Address" button
         ReusableMethods.waitFor(2);
         customerShippingAddressPage.saveAddressButton.submit();
-
         //Verify the Shipping Address be added successfully
         Assert.assertTrue(customerShippingAddressPage.successfulMessage.isDisplayed());
+        }
+        @Test
+        public void TC_02_test() {
+        CustomerShippingAddressPage customerShippingAddressPage = new CustomerShippingAddressPage();
+        ReusableMethods.waitFor(2);
+        //Click on the "Save Address" button
+        customerShippingAddressPage.saveAddressButton.submit();
 
-    }
+        //Verify the user receive a warning message
+        Assert.assertTrue(customerShippingAddressPage.firstnameAlertMessage.isDisplayed());
+        Assert.assertTrue(customerShippingAddressPage.lastnameAlertMessage.isDisplayed());
+        Assert.assertTrue(customerShippingAddressPage.countryAlertMessage.isDisplayed());
+        Assert.assertTrue(customerShippingAddressPage.addressAlertMessage.isDisplayed());
+        Assert.assertTrue(customerShippingAddressPage.cityAlertMessage.isDisplayed());
+        Assert.assertTrue(customerShippingAddressPage.stateAlertMessage.isDisplayed());
+        Assert.assertTrue(customerShippingAddressPage.zipcodeAlertMessage.isDisplayed());
+
+ }
+        @AfterMethod
+        public void closeBrowser(){
+        ReusableMethods.waitFor(3);
+        Driver.closeDriver();
+        }
 }
+
+
+
+
+
