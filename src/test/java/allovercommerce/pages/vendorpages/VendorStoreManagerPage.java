@@ -10,6 +10,7 @@ public class VendorStoreManagerPage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
+
     @FindBy(xpath = "(//span[@class='text'])[4]")
     public WebElement productsIcon;
 
@@ -39,6 +40,28 @@ public class VendorStoreManagerPage {
 
     @FindBy(linkText = "Coupons")
     public WebElement couponsButton;
+
+    @FindBy(xpath = "//a[.='Store Manager']")
+    public WebElement StoreManagerButton;
+
+    @FindBy(linkText="Products")
+    public WebElement ProductsButton;
+
+    @FindBy(xpath = "//span[.='Add New']")
+    public WebElement AddNewButton;
+
+    @FindBy(xpath= "//button[@id='insert-media-button']")
+    public WebElement addMedia;
+    @FindBy(xpath= "//h2[contains(text(),'Add Product')]")
+    public WebElement addProductText;
+
+    @FindBy(xpath="//img[@id='featured_img_display']")
+    public WebElement addImage;
+
+    @FindBy(xpath = "//select[@id='product_type']")
+    public WebElement productType;
+
+
 
 
 }
