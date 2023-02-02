@@ -17,6 +17,7 @@ public class CustomerHomePage {
     @FindBy(linkText="My Account")
     public WebElement myAccountButton;
 
+
     @FindBy(xpath="//a[@class='login inline-type']")
     public WebElement signIn;
 
@@ -31,6 +32,7 @@ public class CustomerHomePage {
 
     @FindBy(xpath="//button[@type='submit']")
     public WebElement submit;
+
 
 
 
@@ -61,6 +63,7 @@ public class CustomerHomePage {
 
     @FindBy(xpath = "//div[@aria-live='polite']")
     public WebElement weakPasswordMessage;
+
 
 
 }
