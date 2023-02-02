@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class CustomerHomePage {
+
     public CustomerHomePage(){
         PageFactory.initElements(Driver.getDriver(), this);
     }
@@ -27,6 +28,36 @@ public class CustomerHomePage {
 
     @FindBy(xpath="//button[@type='submit']")
     public WebElement submit;
+
+
+
+
+
+    @FindBy(id = "reg_username")
+    public WebElement registerUsername;
+
+    @FindBy(id = "reg_email")
+    public WebElement registerEmail;
+
+    @FindBy(id = "reg_password")
+    public WebElement registerPassword;
+
+
+
+    @FindBy(id = "register-policy")
+    public WebElement agreeCheckbox;
+
+    @FindBy(name = "register")
+    public WebElement signUpButton;
+
+    @FindBy(linkText = "Sign Out")
+    public WebElement signOutButton;
+
+    @FindBy(xpath = "(//p[@class='submit-status'])[2]")
+    public WebElement errorMessage;
+
+    @FindBy(xpath = "//div[@aria-live='polite']")
+    public WebElement weakPasswordMessage;
 
 
 }
