@@ -10,9 +10,13 @@ public class VendorHomePage {
 
 
 
+
+
+
     public VendorHomePage(){
         PageFactory.initElements(Driver.getDriver(), this);
     }
+
 
 
     @FindBy(xpath = "(//*[.='Sign In'])[2]")
@@ -25,6 +29,8 @@ public class VendorHomePage {
 
     @FindBy(linkText = "Log out")
     public WebElement logOutIcon;
+
+
 
 
 
@@ -46,6 +52,9 @@ public class VendorHomePage {
 
     @FindBy(linkText="My Account")
     public WebElement myAccountButton;
+
+
+
 
 
 }

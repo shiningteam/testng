@@ -6,9 +6,14 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class VendorStoreManagerPage {
+
+
+
+
     public VendorStoreManagerPage(){
         PageFactory.initElements(Driver.getDriver(), this);
     }
+
 
 
     @FindBy(xpath = "(//span[@class='text'])[4]")
@@ -41,6 +46,8 @@ public class VendorStoreManagerPage {
     @FindBy(linkText = "Coupons")
     public WebElement couponsButton;
 
+
+
     @FindBy(xpath = "//a[.='Store Manager']")
     public WebElement StoreManagerButton;
 
@@ -60,6 +67,14 @@ public class VendorStoreManagerPage {
 
     @FindBy(xpath = "//select[@id='product_type']")
     public WebElement productType;
+
+
+
+
+
+
+
+
 
 
 
