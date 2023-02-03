@@ -94,7 +94,6 @@ public class US_04_TC_01 {
         Assert.assertTrue(customerShippingAddressPage.cityAlertMessage.isDisplayed());
         Assert.assertTrue(customerShippingAddressPage.stateAlertMessage.isDisplayed());
         Assert.assertTrue(customerShippingAddressPage.zipcodeAlertMessage.isDisplayed());
-
  }
         @AfterMethod
         public void closeBrowser(){
