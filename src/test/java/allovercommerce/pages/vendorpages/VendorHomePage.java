@@ -14,8 +14,6 @@ public class VendorHomePage {
     @FindBy(xpath = "(//*[.='Sign In'])[2]")
     public WebElement vendorSignInIcon;
 
-
-
     @FindBy(xpath = "(//*[.='Sign Out'])[1]")
     public WebElement signOutIcon;
 
@@ -24,6 +22,28 @@ public class VendorHomePage {
 
 
 
+
+    @FindBy(id="username")
+    public WebElement username;
+
+    @FindBy(id="password")
+    public WebElement password;
+
+    @FindBy(xpath = "//button[.='Sign In']")
+    public WebElement VendorSignInButton;
+
+    @FindBy(linkText="My Account")
+    public WebElement myAccountButton;
+
+    @FindBy(linkText="Addresses")
+    public WebElement AddressesButton;
+
+    @FindBy(xpath = "//a[@class='edit btn btn-link btn-primary btn-underline mb-4']")
+    public WebElement AddressAddButton;
+
+
+     // @FindBy(linkText="Sign In")
+        //public WebElement VendorSignInIcon;
 
 
 
