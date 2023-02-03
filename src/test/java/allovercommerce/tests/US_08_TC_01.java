@@ -81,6 +81,7 @@ public class US_08_TC_01 {
         JSUtils.clickElementByJS(customerWishListPage.backpackAddToCartButton);
 
         //Click on the "Cart" button
+        ReusableMethods.waitFor(2);
         JSUtils.clickElementByJS(customerWishListPage.CartButton);
 
         //Verify the item that added to the cart is displayed
