@@ -101,9 +101,7 @@ public class US_01_TC_01 {
         String errorMessage=customerHomePage.errorMessage.getText();
         System.out.println(errorMessage);
         Assert.assertEquals(errorMessage,"Please enter a valid account username.");
-
-//        ReusableMethods.getScreenshot("negativeLoginScreenshot2");
-
+        //ReusableMethods.getScreenshot("negativeLoginScreenshot2");
         }
     @Test //wrong email bug
     public void testcase_04() throws IOException {
@@ -134,9 +132,7 @@ public class US_01_TC_01 {
         String errorMessage=customerHomePage.errorMessage.getText();
         System.out.println(errorMessage);
         Assert.assertFalse(false,"Please enter a valid email address.");
-
-//        ReusableMethods.getScreenshot("negativeLoginScreenshot3");
-
+        //ReusableMethods.getScreenshot("negativeLoginScreenshot3");
 
     }
     @Test //wrong password bug
