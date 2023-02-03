@@ -12,4 +12,7 @@ public class VendorMyAccountPage {
 
     @FindBy(linkText = "Store Manager")
     public WebElement storeManagerIcon;
+
+    @FindBy(linkText = "Log out")
+    public WebElement logOutIcon;
 }

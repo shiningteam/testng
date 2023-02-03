@@ -68,6 +68,12 @@ public class VendorStoreManagerPage {
     @FindBy(xpath = "//select[@id='product_type']")
     public WebElement productType;
 
+    @FindBy(xpath = "//*[*='Sign Out']")
+    public WebElement signOutIcon;
+
+    @FindBy(xpath = "(//a[@href='https://allovercommerce.com/my-account-2/'])[1]")
+    public WebElement myAccountButton;
+
 
 
 

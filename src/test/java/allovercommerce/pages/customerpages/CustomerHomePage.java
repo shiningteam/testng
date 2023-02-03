@@ -60,6 +60,15 @@ public class CustomerHomePage {
     @FindBy(xpath = "//div[@aria-live='polite']")
     public WebElement weakPasswordMessage;
 
+    @FindBy(className = "single_add_to_cart_button button alt")
+    public WebElement mensClothingAddToCartButton;
+
+    @FindBy(xpath = "//div[@data-id='fbb1175']")
+    public WebElement cartIcon;
+
+    @FindBy(linkText = "View cart")
+    public WebElement viewCartButton;
+
 
 
 }

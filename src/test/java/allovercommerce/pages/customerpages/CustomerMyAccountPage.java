@@ -23,6 +23,9 @@ public class CustomerMyAccountPage {
     @FindBy(id="account_first_name")
     public WebElement accountFirstName;
 
+    @FindBy(xpath = "//a//img[@height='186']")
+    public WebElement alloverCommerceButton;
+
 
 
 
