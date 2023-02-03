@@ -7,6 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class CustomerHomePage {
 
+
     public CustomerHomePage(){
         PageFactory.initElements(Driver.getDriver(), this);
     }
@@ -42,11 +43,19 @@ public class CustomerHomePage {
     @FindBy(id = "reg_password")
     public WebElement registerPassword;
 
+    @FindBy(linkText = "Register")
+    public WebElement homePageRegisterLink;
+
+
+
+
+
     @FindBy(id = "register-policy")
     public WebElement agreeCheckbox;
 
     @FindBy(name = "register")
     public WebElement signUpButton;
+
 
     @FindBy(linkText = "Sign Out")
     public WebElement signOutButton;
@@ -54,12 +63,12 @@ public class CustomerHomePage {
     @FindBy(linkText = "Wishlist")
     public WebElement WishlistButton;
 
+
     @FindBy(xpath = "(//p[@class='submit-status'])[2]")
     public WebElement errorMessage;
 
     @FindBy(xpath = "//div[@aria-live='polite']")
     public WebElement weakPasswordMessage;
-
 
 
 }
