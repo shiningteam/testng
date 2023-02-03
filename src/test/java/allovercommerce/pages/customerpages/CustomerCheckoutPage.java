@@ -16,4 +16,11 @@ public class CustomerCheckoutPage {
 
     @FindBy(xpath="//*[.='Thank you. Your order has been received.']")
     public WebElement orderSuccessMessage;
+
+    @FindBy(xpath = "//a[@class='button checkout wc-forward']")
+    public WebElement checkOutButton;
+
+
+    @FindBy(id="payment_method_bacs")
+    public WebElement wireTransferButton;
 }
