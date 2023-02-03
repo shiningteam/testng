@@ -1,9 +1,9 @@
 package allovercommerce.tests;
 
-import allovercommerce.pages.customerpages.CustomerHomePage;
-import allovercommerce.pages.customerpages.CustomerMyAccountPage;
-import allovercommerce.pages.customerpages.CustomerRegisterPage;
-import allovercommerce.pages.customerpages.CustomerShippingAddressPage;
+import allovercommerce.pages.vendorpages.customerpages.CustomerHomePage;
+import allovercommerce.pages.vendorpages.customerpages.CustomerMyAccountPage;
+import allovercommerce.pages.vendorpages.customerpages.CustomerRegisterPage;
+import allovercommerce.pages.vendorpages.customerpages.CustomerShippingAddressPage;
 import allovercommerce.utilities.ConfigReader;
 import allovercommerce.utilities.Driver;
 import allovercommerce.utilities.JSUtils;
@@ -14,8 +14,6 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import java.io.IOException;
 
 public class US_04_TC_01 {
 

@@ -1,4 +1,4 @@
-package allovercommerce.pages.customerpages;
+package allovercommerce.pages.vendorpages.customerpages;
 
 import allovercommerce.utilities.Driver;
 import org.openqa.selenium.WebElement;
@@ -16,10 +16,6 @@ public class CustomerHomePage {
 
     @FindBy(linkText="My Account")
     public WebElement myAccountButton;
-
-
-    @FindBy(xpath="//a[@class='login inline-type']")
-    public WebElement signIn;
 
     @FindBy(id="username")
     public WebElement username;
@@ -60,6 +56,16 @@ public class CustomerHomePage {
     @FindBy(xpath = "//div[@aria-live='polite']")
     public WebElement weakPasswordMessage;
 
+    @FindBy(linkText = "Sign In")
+    public WebElement signIn;
 
+    @FindBy(id = "username")
+    public WebElement customerEmail;
+
+    @FindBy(id = "password")
+    public WebElement customerPassword;
+
+    @FindBy(name = "login")
+    public WebElement customerSignInButton;
 
 }

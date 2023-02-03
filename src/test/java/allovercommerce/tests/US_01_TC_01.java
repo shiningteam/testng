@@ -1,13 +1,11 @@
 package allovercommerce.tests;
 
-import allovercommerce.pages.customerpages.CustomerHomePage;
+import allovercommerce.pages.vendorpages.customerpages.CustomerHomePage;
 import allovercommerce.utilities.ConfigReader;
 import allovercommerce.utilities.Driver;
 import allovercommerce.utilities.ReusableMethods;
 import com.github.javafaker.Faker;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.io.IOException;

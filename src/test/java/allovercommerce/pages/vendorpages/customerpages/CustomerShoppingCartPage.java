@@ -1,4 +1,4 @@
-package allovercommerce.pages.customerpages;
+package allovercommerce.pages.vendorpages.customerpages;
 
 import allovercommerce.utilities.Driver;
 import org.openqa.selenium.WebElement;
