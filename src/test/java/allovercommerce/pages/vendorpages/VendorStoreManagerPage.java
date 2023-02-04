@@ -68,6 +68,9 @@ public class VendorStoreManagerPage {
     @FindBy(xpath = "//select[@id='product_type']")
     public WebElement productType;
 
+    @FindBy(xpath = "(//a[@class='wcfm_dashboard_item_title'])[1]")
+    public WebElement firstCode;
+
 
 
 
