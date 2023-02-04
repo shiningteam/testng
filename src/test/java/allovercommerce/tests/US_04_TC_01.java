@@ -1,9 +1,9 @@
 package allovercommerce.tests;
 
-import allovercommerce.pages.vendorpages.customerpages.CustomerHomePage;
-import allovercommerce.pages.vendorpages.customerpages.CustomerMyAccountPage;
-import allovercommerce.pages.vendorpages.customerpages.CustomerRegisterPage;
-import allovercommerce.pages.vendorpages.customerpages.CustomerShippingAddressPage;
+import allovercommerce.pages.customerpages.CustomerHomePage;
+import allovercommerce.pages.customerpages.CustomerMyAccountPage;
+import allovercommerce.pages.customerpages.CustomerRegisterPage;
+import allovercommerce.pages.customerpages.CustomerShippingAddressPage;
 import allovercommerce.utilities.ConfigReader;
 import allovercommerce.utilities.Driver;
 import allovercommerce.utilities.JSUtils;

@@ -1,4 +1,4 @@
-package allovercommerce.pages.vendorpages.customerpages;
+package allovercommerce.pages.customerpages;
 
 import allovercommerce.utilities.Driver;
 import org.openqa.selenium.WebElement;
@@ -22,6 +22,9 @@ public class CustomerMyAccountPage {
 
     @FindBy(id="account_first_name")
     public WebElement accountFirstName;
+
+    @FindBy(xpath = "(//a[.='Add'])[1]")
+    public WebElement addBillingAddressButton;
 
 
 

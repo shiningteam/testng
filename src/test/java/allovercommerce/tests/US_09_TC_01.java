@@ -72,8 +72,10 @@ public class US_09_TC_01 {
         //     will appear if the user tries to register using a registered email address.
         ReusableMethods.waitFor(2);
 
-
-
-
+        //    @AfterMethod
+//    public void closeBrowser(){
+//        ReusableMethods.waitFor(3);
+//        Driver.closeDriver();
+//    }
     }
 }

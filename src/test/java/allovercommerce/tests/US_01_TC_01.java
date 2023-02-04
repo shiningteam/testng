@@ -1,6 +1,6 @@
 package allovercommerce.tests;
 
-import allovercommerce.pages.vendorpages.customerpages.CustomerHomePage;
+import allovercommerce.pages.customerpages.CustomerHomePage;
 import allovercommerce.utilities.ConfigReader;
 import allovercommerce.utilities.Driver;
 import allovercommerce.utilities.ReusableMethods;
