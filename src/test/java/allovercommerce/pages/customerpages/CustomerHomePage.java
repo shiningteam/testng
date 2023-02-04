@@ -58,14 +58,9 @@ public class CustomerHomePage {
 
     @FindBy(linkText = "Sign In")
     public WebElement signIn;
+    @FindBy(xpath = "//input[@aria-label='Search']")
+    public WebElement searchBar;
 
-    @FindBy(id = "username")
-    public WebElement customerEmail;
-
-    @FindBy(id = "password")
-    public WebElement customerPassword;
-
-    @FindBy(name = "login")
-    public WebElement customerSignInButton;
-
+    @FindBy(xpath = "//*[@id=\"header\"]/div/div/div/div/div/div[3]/div/div/form/button")
+    public WebElement searchIcon;
 }

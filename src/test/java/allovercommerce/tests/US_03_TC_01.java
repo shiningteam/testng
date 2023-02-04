@@ -49,7 +49,6 @@ public class US_03_TC_01 {
         ReusableMethods.waitFor(3);
         JSUtils.scrollIntoViewJS(customerMyAccountPage.addBillingAddressButton);
         JSUtils.clickElementByJS(customerMyAccountPage.addBillingAddressButton);
-        //customerMyAccountPage.addBillingAddressButton.click();
     }
 
         @Test
@@ -58,20 +57,20 @@ public class US_03_TC_01 {
             // User enters the First name, Last name, Country/Region, Street address, Town / City, State ZIP Code and Phone.
             Faker faker = new Faker();
             CustomerBillingAddressPage customerBillingAddressPage = new CustomerBillingAddressPage();
-            customerBillingAddressPage.billingFirstnameInput.sendKeys(faker.name().firstName());
-            customerBillingAddressPage.billingLastnameInput.sendKeys(faker.name().lastName());
+            customerBillingAddressPage.billingFirstName.sendKeys(faker.name().firstName());
+            customerBillingAddressPage.billingLastName.sendKeys(faker.name().lastName());
             customerBillingAddressPage.billingCompany.sendKeys("Apple");
 
             Select select = new Select(customerBillingAddressPage.selectCountryDropdown);
             select.selectByVisibleText("United States (US)");
 
-            customerBillingAddressPage.billingStreetAddressInput.sendKeys(faker.address().fullAddress());
-            customerBillingAddressPage.billingCityInput.sendKeys(faker.address().city());
+            customerBillingAddressPage.billingStreetAddress.sendKeys(faker.address().fullAddress());
+            customerBillingAddressPage.billingCity.sendKeys(faker.address().city());
 
             Select select2 = new Select(customerBillingAddressPage.selectStateDropdown);
             select2.selectByVisibleText("California");
 
-            customerBillingAddressPage.billingZipCodeInput.sendKeys(faker.address().zipCode());
+            customerBillingAddressPage.billingZipCode.sendKeys(faker.address().zipCode());
 
             customerBillingAddressPage.billingPhone.sendKeys(faker.phoneNumber().cellPhone());
 
@@ -95,17 +94,17 @@ public class US_03_TC_01 {
 
         //Verify the user receive a warning message
         Assert.assertTrue(customerBillingAddressPage.firstnameAlertMessage.isDisplayed());
-    //    Assert.assertTrue(customerBillingAddressPage.lastnameAlertMessage.isDisplayed());
-    //    Assert.assertTrue(customerBillingAddressPage.countryAlertMessage.isDisplayed());
-    //    Assert.assertTrue(customerBillingAddressPage.addressAlertMessage.isDisplayed());
-    //    Assert.assertTrue(customerBillingAddressPage.cityAlertMessage.isDisplayed());
-    //    Assert.assertTrue(customerBillingAddressPage.stateAlertMessage.isDisplayed());
-    //    Assert.assertTrue(customerBillingAddressPage.zipcodeAlertMessage.isDisplayed());
+        Assert.assertTrue(customerBillingAddressPage.lastnameAlertMessage.isDisplayed());
+        Assert.assertTrue(customerBillingAddressPage.countryAlertMessage.isDisplayed());
+        Assert.assertTrue(customerBillingAddressPage.addressAlertMessage.isDisplayed());
+        Assert.assertTrue(customerBillingAddressPage.cityAlertMessage.isDisplayed());
+        Assert.assertTrue(customerBillingAddressPage.stateAlertMessage.isDisplayed());
+        Assert.assertTrue(customerBillingAddressPage.zipcodeAlertMessage.isDisplayed());
     }
 
-//    @AfterMethod
-//    public void closeBrowser(){
-//        ReusableMethods.waitFor(3);
-//        Driver.closeDriver();
-//    }
+    @AfterMethod
+    public void closeBrowser(){
+        ReusableMethods.waitFor(3);
+        Driver.closeDriver();
+    }
 }

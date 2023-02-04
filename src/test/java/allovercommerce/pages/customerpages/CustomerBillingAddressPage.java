@@ -11,35 +11,44 @@ public class CustomerBillingAddressPage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-    @FindBy(id="billing_first_name")
-    public WebElement billingFirstnameInput;
+    @FindBy(xpath = "//input[@id='billing_first_name']")
+    public WebElement billingFirstName;
 
-    @FindBy(id="billing_last_name")
-    public WebElement billingLastnameInput;
+    @FindBy(xpath = "//input[@id='billing_last_name']")
+    public WebElement billingLastName;
 
-    @FindBy(id="billing_company")
+    @FindBy(xpath = "//input[@id='billing_company']")
     public WebElement billingCompany;
+
+    @FindBy(id = "billing_country")
+    public WebElement billingCountry;
+
+    @FindBy(xpath = "//input[@id='billing_address_1']")
+    public WebElement billingAdress;
+
+    @FindBy(id="billing_address_1")
+    public WebElement billingStreetAddress;
+
+    @FindBy (xpath = "//input[@id='billing_city']")
+    public WebElement billingCity;
+
+    @FindBy (id = "billing_state")
+    public WebElement billingState;
+
+    @FindBy(xpath = "//input[@id='billing_postcode']")
+    public WebElement billingZipCode;
+
+    @FindBy(xpath = "//input[@id='billing_phone']" )
+    public WebElement billingPhone;
+
+    @FindBy(xpath = "//input[@id='billing_email']")
+    public WebElement billingEmail;
 
     @FindBy(id="billing_country")
     public WebElement selectCountryDropdown;
 
-    @FindBy(id="billing_address_1")
-    public WebElement billingStreetAddressInput;
-
-    @FindBy(id="billing_city")
-    public WebElement billingCityInput;
-
     @FindBy(id="billing_state")
     public WebElement selectStateDropdown;
-
-    @FindBy(id="billing_postcode")
-    public WebElement billingZipCodeInput;
-
-    @FindBy(id = "billing_email")
-    public WebElement billingEmail;
-
-    @FindBy(id = "billing_phone")
-    public WebElement billingPhone;
 
     @FindBy(name="save_address")
     public WebElement saveAddressButton;
@@ -47,14 +56,8 @@ public class CustomerBillingAddressPage {
     @FindBy(xpath = "//a[.='Edit Your Billing Address']")
     public WebElement successfulMessage;
 
-    //Alert Messages
-   // @FindBy(xpath = "//li[@data-id='billing_first_name']")
-   // public WebElement firstnameAlertMessage;
-
     @FindBy(partialLinkText = "alert")
      public WebElement firstnameAlertMessage;
-
-    //alert alert-simple alert-icon alert-close-top alert-danger
 
     @FindBy(xpath = "//li[@data-id='billing_last_name']")
     public WebElement lastnameAlertMessage;
@@ -76,5 +79,7 @@ public class CustomerBillingAddressPage {
 
     @FindBy(partialLinkText = "The following addresses")
     public WebElement registeredEmailAddress;
-
 }
+
+
+
