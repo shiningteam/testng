@@ -104,7 +104,7 @@ public class US_03_TC_01 {
 
     @AfterMethod
     public void closeBrowser(){
-        ReusableMethods.waitFor(3);
+       ReusableMethods.waitFor(3);
         Driver.closeDriver();
     }
 }

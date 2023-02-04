@@ -6,6 +6,7 @@ import allovercommerce.utilities.ConfigReader;
 import allovercommerce.utilities.Driver;
 import allovercommerce.utilities.ReusableMethods;
 import com.github.javafaker.Faker;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 public class US_09_TC_01 {
@@ -28,7 +29,7 @@ public class US_09_TC_01 {
     VendorRegisterPage vendorRegisterPage;
 
     @Test
-    public void vendorRegistration(){
+    public void vendorRegistration() {
         // 1- User navigates to "https:https:https://allovercommerce.com/"
         Driver.getDriver().get(ConfigReader.getProperty("allovercommerce_url"));
 
@@ -71,11 +72,10 @@ public class US_09_TC_01 {
         // 10- Verifies that the message "This Email already exists. Please log in to the site and apply as vendor."
         //     will appear if the user tries to register using a registered email address.
         ReusableMethods.waitFor(2);
-
-        //    @AfterMethod
-//    public void closeBrowser(){
-//        ReusableMethods.waitFor(3);
-//        Driver.closeDriver();
-//    }
+    }
+        @AfterMethod
+        public void closeBrowser(){
+            ReusableMethods.waitFor(3);
+            Driver.closeDriver();
     }
 }

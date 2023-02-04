@@ -56,25 +56,25 @@ public class CustomerBillingAddressPage {
     @FindBy(xpath = "//a[.='Edit Your Billing Address']")
     public WebElement successfulMessage;
 
-    @FindBy(partialLinkText = "alert")
+    @FindBy(xpath = "//li[@data-id='billing_first_name']")
      public WebElement firstnameAlertMessage;
 
     @FindBy(xpath = "//li[@data-id='billing_last_name']")
     public WebElement lastnameAlertMessage;
 
-    @FindBy(xpath = "//li[@data-id='shipping_country']")
+    @FindBy(xpath = "//li[@data-id='billing_country']")
     public WebElement countryAlertMessage;
 
-    @FindBy(xpath = "//li[@data-id='shipping_address_1']")
+    @FindBy(xpath = "//li[@data-id='billing_address_1']")
     public WebElement addressAlertMessage;
 
-    @FindBy(xpath = "//li[@data-id='shipping_city']")
+    @FindBy(xpath = "//li[@data-id='billing_city']")
     public WebElement cityAlertMessage;
 
-    @FindBy(xpath = "//li[@data-id='shipping_state']")
+    @FindBy(xpath = "//li[@data-id='billing_state']")
     public WebElement stateAlertMessage;
 
-    @FindBy(xpath = "//li[@data-id='shipping_postcode']")
+    @FindBy(xpath = "//li[@data-id='billing_postcode']")
     public WebElement zipcodeAlertMessage;
 
     @FindBy(partialLinkText = "The following addresses")
