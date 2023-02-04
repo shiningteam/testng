@@ -1,23 +1,31 @@
 package allovercommerce.tests;
 
+<<<<<<< Updated upstream
 import allovercommerce.pages.vendorpages.*;
 import allovercommerce.pages.customerpages.CustomerHomePage;
 import allovercommerce.pages.customerpages.CustomerMyAccountPage;
 import allovercommerce.pages.customerpages.CustomerRegisterPage;
 import allovercommerce.pages.customerpages.CustomerShoppingCartPage;
+=======
+import allovercommerce.pages.customerpages.*;
+import allovercommerce.pages.vendorpages.*;
+>>>>>>> Stashed changes
 import allovercommerce.utilities.ConfigReader;
 import allovercommerce.utilities.Driver;
 import allovercommerce.utilities.JSUtils;
 import allovercommerce.utilities.ReusableMethods;
 import com.github.javafaker.Faker;
+import org.apache.commons.math3.filter.KalmanFilter;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class US_21_TC_01 {
     VendorHomePage vendorHomePage=new VendorHomePage();
@@ -29,6 +37,9 @@ public class US_21_TC_01 {
     VendorMyAccountPage vendorMyAccountPage=new VendorMyAccountPage();
     CustomerMyAccountPage customerMyAccountPage=new CustomerMyAccountPage();
     CustomerHomePage customerHomePage=new CustomerHomePage();
+    CustomerProductsPage customerProductsPage=new CustomerProductsPage();
+
+
     Faker faker=new Faker();
     @Test
     public void enterTheGeneratedCoupon() throws IOException {
@@ -103,17 +114,22 @@ public class US_21_TC_01 {
         Assert.assertTrue(vendorCouponsPage.showOnStoreCheckbox.isEnabled());
 
         //Click the submit button
-        Actions actions=new Actions(Driver.getDriver());
-        actions.sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN);
-        JSUtils.clickElementByJS(vendorCouponsPage.submitButton);
-
+        JSUtils.scrollDownByJS();
         ReusableMethods.waitFor(2);
+        JSUtils.clickElementByJS(vendorCouponsPage.submitButton);
         ReusableMethods.getScreenshot();
 
+        ReusableMethods.waitFor(4);
+
+        //Click the coupons link
+        JSUtils.clickElementByJS(vendorStoreManagerPage.couponsButton);
+        List<WebElement> codeList=new ArrayList<>();
+
+
         // Click "Sign Out" button
-        vendorStoreManagerPage.signOutIcon.click();
-        ReusableMethods.waitFor(2);
-        vendorMyAccountPage.logOutIcon.click();
+        JSUtils.clickElementByJS(vendorStoreManagerPage.signOutIcon);
+        ReusableMethods.waitFor(4);
+        JSUtils.clickElementByJS(vendorMyAccountPage.logOutIcon);
 
         //Enter username or email address
          customerRegisterPage.signInUsernameInput.sendKeys(ConfigReader.getProperty("customer_username"));
@@ -126,36 +142,39 @@ public class US_21_TC_01 {
         JSUtils.clickElementByJS(customerRegisterPage.signInButton);
         ReusableMethods.waitFor(2);
 
-        customerMyAccountPage.alloverCommerceButton.click();
-        ReusableMethods.waitFor(1);
+        JSUtils.clickElementByJS(customerMyAccountPage.alloverCommerceButton);
+        ReusableMethods.waitFor(4);
 
- //Click the men's clothing product add to cart button
-        customerHomePage.mensClothingAddToCartButton.click();
+//        //Click the search button and search Chess
+        //SUtils.clickElementByJS(customerHomePage.searchIcon);
+        ReusableMethods.waitForVisibility(customerHomePage.searchBar,10);
+        customerHomePage.searchBar.sendKeys("Chess"+Keys.ENTER);
 
+        ReusableMethods.waitFor(3);
 
-//        //Click the Cart button
-        customerHomePage.cartIcon.click();
+//         //Click the add to cart button
+        JSUtils.clickElementByJS(customerProductsPage.chessAddToCartButton);
+        ReusableMethods.waitFor(4);
 
+        //Click the view cart button
+        JSUtils.clickElementByJS(customerProductsPage.viewCartButton);
+        ReusableMethods.waitFor(3);
 
-
-//        //Click the view cart button
-        customerHomePage.viewCartButton.click();
-//
-//
-//        //Click the enter code here box
-       customerShoppingCartPage.enterCouponBox.click();
-//
-//        //Enter the coupon
+         //Click the enter code here box
+       JSUtils.clickElementByJS(customerShoppingCartPage.enterCouponBox);
+        ReusableMethods.waitFor(3);
+//      Enter the coupon
       customerShoppingCartPage.enterCouponBox.sendKeys(code);
       ReusableMethods.waitFor(2);
-//
-//        //Click the apply coupon button
-   customerShoppingCartPage.applyCouponButton.click();
-   ReusableMethods.getScreenshot();
+
+//    Click the apply coupon button, The generated coupon should be entered by clicking ENTER YOUR CODE.
+        JSUtils.clickElementByJS(customerShoppingCartPage.applyCouponButton);
+        ReusableMethods.waitFor(2);
+       ReusableMethods.getScreenshot();
 
 
 //    Generated coupons should be visible.
-//   The generated coupon should be entered by clicking ENTER YOUR CODE.
+
 
     }
 }

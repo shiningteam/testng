@@ -7,8 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class CustomerHomePage {
 
-    public CustomerHomePage(){
-        PageFactory.initElements(Driver.getDriver(), this);
+    public CustomerHomePage(){PageFactory.initElements(Driver.getDriver(), this);
     }
 
     @FindBy(linkText="Register")
@@ -56,21 +55,18 @@ public class CustomerHomePage {
     @FindBy(xpath = "//div[@aria-live='polite']")
     public WebElement weakPasswordMessage;
 
-<<<<<<< HEAD
-    @FindBy(className = "single_add_to_cart_button button alt")
-    public WebElement mensClothingAddToCartButton;
-
-    @FindBy(xpath = "//div[@data-id='fbb1175']")
-    public WebElement cartIcon;
-
-    @FindBy(linkText = "View cart")
-    public WebElement viewCartButton;
 
 
-=======
+
+
+
+
+
+
+
     @FindBy(linkText = "Sign In")
     public WebElement signIn;
->>>>>>> master
+
     @FindBy(xpath = "//input[@aria-label='Search']")
     public WebElement searchBar;
 

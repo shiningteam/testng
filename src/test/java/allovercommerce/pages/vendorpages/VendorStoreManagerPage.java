@@ -146,7 +146,7 @@ public class VendorStoreManagerPage {
 
 
 
-    @FindBy(xpath = "//*[*='Sign Out']")
+    @FindBy(xpath = "//span[contains(text(),'Sign Out')]")
     public WebElement signOutIcon;
 
     @FindBy(xpath = "(//a[@href='https://allovercommerce.com/my-account-2/'])[1]")
