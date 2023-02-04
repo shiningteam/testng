@@ -151,6 +151,14 @@ public class VendorStoreManagerPage {
     @FindBy(xpath = "(//a[@class='wcfm_dashboard_item_title'])[1]")
     public WebElement firstCode;
 
+    @FindBy(id= "is_virtual")
+    public WebElement virtualCheckBox;
+
+    @FindBy(id="is_downloadable")
+    public WebElement downloadableCheckBox;
+
+
+
 
 
 
