@@ -1,5 +1,4 @@
 package allovercommerce.tests;
-
 import allovercommerce.pages.customerpages.*;
 import allovercommerce.utilities.ConfigReader;
 import allovercommerce.utilities.Driver;

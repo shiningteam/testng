@@ -69,8 +69,13 @@ public class CustomerMyAccountPage {
 
 
 
+
     @FindBy(xpath = "//a//img[@height='186']")
     public WebElement alloverCommerceButton;
+
+    @FindBy(xpath = "(//a[.='Add'])[1]")
+    public WebElement addBillingAddressButton;
+
 
 
 

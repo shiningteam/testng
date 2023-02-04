@@ -17,10 +17,6 @@ public class CustomerHomePage {
     @FindBy(linkText="My Account")
     public WebElement myAccountButton;
 
-
-    @FindBy(xpath="//a[@class='login inline-type']")
-    public WebElement signIn;
-
     @FindBy(id="username")
     public WebElement username;
 
@@ -60,6 +56,7 @@ public class CustomerHomePage {
     @FindBy(xpath = "//div[@aria-live='polite']")
     public WebElement weakPasswordMessage;
 
+<<<<<<< HEAD
     @FindBy(className = "single_add_to_cart_button button alt")
     public WebElement mensClothingAddToCartButton;
 
@@ -70,12 +67,13 @@ public class CustomerHomePage {
     public WebElement viewCartButton;
 
 
+=======
+    @FindBy(linkText = "Sign In")
+    public WebElement signIn;
+>>>>>>> master
     @FindBy(xpath = "//input[@aria-label='Search']")
     public WebElement searchBar;
 
     @FindBy(xpath = "//*[@id=\"header\"]/div/div/div/div/div/div[3]/div/div/form/button")
     public WebElement searchIcon;
-
-
-
 }
