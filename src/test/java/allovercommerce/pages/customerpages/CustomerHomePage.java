@@ -70,5 +70,12 @@ public class CustomerHomePage {
     public WebElement viewCartButton;
 
 
+    @FindBy(xpath = "//input[@aria-label='Search']")
+    public WebElement searchBar;
+
+    @FindBy(xpath = "//*[@id=\"header\"]/div/div/div/div/div/div[3]/div/div/form/button")
+    public WebElement searchIcon;
+
+
 
 }

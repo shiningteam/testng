@@ -14,6 +14,16 @@ public class CustomerProductsPage {
     @FindBy(xpath="//a[@data-product-id='13257']")
     public WebElement backpackHeartButton;
 
+    @FindBy(xpath = "//button[@class='quantity-plus w-icon-plus']")
+    public WebElement plusIcon;
+
+    @FindBy(xpath = "//button[@value='13232']")
+    public WebElement addToCartButton;
+
+    @FindBy(xpath = "//*[@data-id='fbb1175']")
+    public WebElement cartIcon;
+
+
 
 
 
