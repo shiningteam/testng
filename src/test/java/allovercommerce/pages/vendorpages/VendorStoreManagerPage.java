@@ -129,6 +129,20 @@ public class VendorStoreManagerPage {
     @FindBy(xpath = "//select[@id='catalog_visibility']//option")
     public List<WebElement> catalogVisibility;
 
+    @FindBy(xpath = "//select[@id='catalog_visibility']")
+    public WebElement catalogOptions;
+
+    @FindBy(xpath = "//img[@id='featured_img_display']")
+    public WebElement imageButton;
+
+    @FindBy(xpath = "//button[@id='menu-item-upload']")
+    public WebElement upload;
+
+    @FindBy(xpath = "//button[.='Select Files']")
+    public WebElement selectFiles;
+
+    @FindBy(xpath = "//button[.='Select']")
+    public WebElement select;
 
 
 
@@ -137,6 +151,11 @@ public class VendorStoreManagerPage {
 
     @FindBy(xpath = "(//a[@href='https://allovercommerce.com/my-account-2/'])[1]")
     public WebElement myAccountButton;
+
+
+
+    @FindBy(xpath = "(//a[@class='wcfm_dashboard_item_title'])[1]")
+    public WebElement firstCode;
 
 
 

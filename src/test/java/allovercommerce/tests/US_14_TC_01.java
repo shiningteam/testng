@@ -7,15 +7,21 @@ import allovercommerce.utilities.Driver;
 import allovercommerce.utilities.JSUtils;
 import allovercommerce.utilities.ReusableMethods;
 import com.github.javafaker.Faker;
-import com.google.j2objc.annotations.Weak;
+import org.junit.After;
+import org.junit.Before;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +32,6 @@ public class US_14_TC_01 {
     VendorHomePage VendorHomePage = new VendorHomePage();
     VendorStoreManagerPage VendorStoreManagerPage = new VendorStoreManagerPage();
     Faker faker = new Faker();
-
     @BeforeMethod
     public void signIn() {
         //        1- User goes to ''https://allovercommerce.com/''
@@ -58,7 +63,6 @@ public class US_14_TC_01 {
         ReusableMethods.waitFor(3);
         scrollIntoViewJS(VendorStoreManagerPage.addProductText);
     }
-
     @Test
     public void optionsTest() {
 //        10- Verify ""Simple Product, Variable Product, Grouped Product,External - Affiliate Product"" options is visible."
@@ -90,14 +94,33 @@ public class US_14_TC_01 {
 //        String simpleProduct = select.getFirstSelectedOption().getText();
 //        Assert.assertEquals(simpleProduct, "Simple Product");
 //        ReusableMethods.waitFor(3);
-//        11- Click on "image" part
-
-//        12- Click on "Upload files" button
-//        13- Click on "SELECT FILES" button and upload the image
-//        14- Click on "SELECT" button
-//        15- Verify "photo" is uploaded by taking screenshot
     }
-
+    @Test
+    public void imageTest() throws IOException {
+//        11- Click on "image" part
+        JSUtils.clickElementByJS(VendorStoreManagerPage.imageButton);
+        ReusableMethods.waitFor(3);
+//        12- Click on "Upload files" button
+        JSUtils.clickElementByJS(VendorStoreManagerPage.upload);
+        ReusableMethods.waitFor(3);
+//        13- Click on "SELECT FILES" button and upload the image
+        String userHOME=System.getProperty("user.home");
+        String pathOfFile = userHOME + "\\Desktop\\image.jpeg";
+//        JSUtils.clickElementByJS(VendorStoreManagerPage.selectFiles);
+        VendorStoreManagerPage.selectFiles.sendKeys(pathOfFile);
+        ReusableMethods.waitFor(10);
+//        14- Click on "SELECT" button
+        JSUtils.clickElementByJS(VendorStoreManagerPage.select);
+        ReusableMethods.waitFor(3);
+//        15- Verify "photo" is uploaded by taking screenshot
+//        URL url = new URL(ConfigReader.getProperty("imageUrl"));
+//        InputStream is = url.openStream();
+//        FileOutputStream fos = new FileOutputStream(ConfigReader.getProperty("localpath"));
+//        byte[] buffer = new byte[4096];
+//        int bytesRead = 0;
+//        while ((bytesRead = is.read(buffer)) != -1) {
+//            fos.write(buffer, 0, bytesRead);
+    }
     @Test
     public void descriptionTest() {
 //        16- Enter "Product Title"
@@ -105,7 +128,6 @@ public class US_14_TC_01 {
         ReusableMethods.waitFor(3);
 
 //        17- Enter "Short Description"
-        Actions actions = new Actions(Driver.getDriver());
         Driver.getDriver().switchTo().frame(VendorStoreManagerPage.shortDescriptionFrame);
         VendorStoreManagerPage.description.sendKeys(ConfigReader.getProperty("short_description"));
         ReusableMethods.waitFor(3);
@@ -186,34 +208,36 @@ public class US_14_TC_01 {
 
     @Test
     public void catalogVisibility() {
-
 //       32- Verify "Catalog visibility" is selectable all options.
         scrollIntoViewJS(VendorStoreManagerPage.tagText);
         ReusableMethods.waitFor(3);
 
-        System.out.println(ReusableMethods.getElementsText(VendorStoreManagerPage.catalogVisibility));
-        List<String> catalogVisibilityOptions = new ArrayList<>(ReusableMethods.getElementsText(VendorStoreManagerPage.catalogVisibility));
-        Assert.assertTrue(catalogVisibilityOptions.contains("Shop and search results"));
-        Assert.assertTrue(catalogVisibilityOptions.contains("Shop only"));
-        Assert.assertTrue(catalogVisibilityOptions.contains("Search results only"));
-        Assert.assertTrue(catalogVisibilityOptions.contains("Hidden"));
+            Select select3 = new Select(VendorStoreManagerPage.catalogOptions);
+            select3.selectByIndex(0);
+            String shopAndSearchResults = select3.getFirstSelectedOption().getText();
+            Assert.assertEquals(shopAndSearchResults, "Shop and search results");
+            ReusableMethods.waitFor(3);
 
-//            Select select3 = new Select(VendorStoreManagerPage.catalogVisibility);
-//            select3.selectByIndex(0);
-//            String shopAndSearchResults = select3.getFirstSelectedOption().getText();
-//            Assert.assertEquals(shopAndSearchResults, "Shop and search results");
-//            ReusableMethods.waitFor(3);
-//
-//            select3.selectByIndex(1);
-//            String shopOnly = select3.getFirstSelectedOption().getText();
-//            Assert.assertEquals(shopAndSearchResults, "Shop and search results");
-//            ReusableMethods.waitFor(3);
-//
-//            select3.selectByIndex(1);
-//            String shopOnly = select3.getFirstSelectedOption().getText();
-//            Assert.assertEquals(shopAndSearchResults, "Shop and search results");
-//            ReusableMethods.waitFor(3);
+            select3.selectByIndex(1);
+            String shopOnly = select3.getFirstSelectedOption().getText();
+            Assert.assertEquals(shopOnly, "Shop only");
+            ReusableMethods.waitFor(3);
+
+            select3.selectByIndex(2);
+            String searchResultsOnly = select3.getFirstSelectedOption().getText();
+            Assert.assertEquals(searchResultsOnly, "Search results only");
+            ReusableMethods.waitFor(3);
+
+        select3.selectByIndex(3);
+        String hidden = select3.getFirstSelectedOption().getText();
+        Assert.assertEquals(hidden, "Hidden");
+        ReusableMethods.waitFor(3);
     }
+//    @AfterMethod
+//    public void closeBrowser(){
+//        ReusableMethods.waitFor(3);
+//        Driver.closeDriver();
+//    }
 }
 //         20- Verify "Categories" options are selectable
 //            VendorStoreManagerPage.checkboxCategory.click();
@@ -236,3 +260,11 @@ public class US_14_TC_01 {
 //            System.out.println(brandList.size());
 //            for (WebElement b : brandList) {
 //                b.click();
+
+
+//        System.out.println(ReusableMethods.getElementsText(VendorStoreManagerPage.catalogVisibility));
+//                List<String> catalogVisibilityOptions = new ArrayList<>(ReusableMethods.getElementsText(VendorStoreManagerPage.catalogVisibility));
+//        Assert.assertTrue(catalogVisibilityOptions.contains("Shop and search results"));
+//        Assert.assertTrue(catalogVisibilityOptions.contains("Shop only"));
+//        Assert.assertTrue(catalogVisibilityOptions.contains("Search results only"));
+//        Assert.assertTrue(catalogVisibilityOptions.contains("Hidden"));
