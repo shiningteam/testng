@@ -69,6 +69,9 @@ public class CustomerMyAccountPage {
 
 
 
+    @FindBy(xpath = "(//a[.='Add'])[1]")
+    public WebElement addBillingAddressButton;
+
 
 
 
