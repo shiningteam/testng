@@ -148,6 +148,9 @@ public class VendorStoreManagerPage {
 
 
 
+    @FindBy(xpath = "(//a[@class='wcfm_dashboard_item_title'])[1]")
+    public WebElement firstCode;
+
 
 
 
