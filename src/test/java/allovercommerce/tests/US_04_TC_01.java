@@ -41,15 +41,15 @@ public class US_04_TC_01 {
 
         //Click on the "My Account" button
         ReusableMethods.waitFor(3);
-        customerHomePage.myAccountButton.click();
+        JSUtils.clickElementByJS(customerHomePage.myAccountButton);
 
         //Click on the "Addresses" button
         CustomerMyAccountPage customerMyAccountPage = new CustomerMyAccountPage();
-        customerMyAccountPage.addressesIcon.click();
+        JSUtils.clickElementByJS(customerMyAccountPage.addressesIcon);
 
         //Go to the "Shipping Address" and click on the ADD button
         ReusableMethods.waitFor(3);
-        customerMyAccountPage.addShippingAddressButton.click();
+        JSUtils.clickElementByJS(customerMyAccountPage.addShippingAddressButton);
         }
         @Test
         public void TC_01_test() {
