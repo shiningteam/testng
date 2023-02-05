@@ -13,6 +13,10 @@ public class VendorMyAccountPage {
     @FindBy(linkText = "Store Manager")
     public WebElement storeManagerIcon;
 
+
+    @FindBy(linkText = "Log out")
+    public WebElement logOutIcon;
+
     @FindBy(xpath = "//a[.='Orders']")
     public WebElement orders;
 
@@ -30,6 +34,7 @@ public class VendorMyAccountPage {
 
     @FindBy(xpath = "//a[contains(text(),'Checkout')]")
     public WebElement checkout;
+
 
 
 

@@ -17,4 +17,19 @@ public class VendorRegisterPage {
 
      @FindBy(name = "login")
     public WebElement vendorSignInButton;
+
+    @FindBy(id = "user_email")
+    public WebElement vendorUserEmail;
+
+    @FindBy(linkText = "Verification Code")
+    public WebElement vendorVerificationCode;
+
+    @FindBy(id = "passoword")
+    public WebElement vendorPassword;
+
+    @FindBy(id = "confirm_pwd")
+    public WebElement vendorConfirmPassword;
+
+    @FindBy(xpath = "value='Register'")
+    public WebElement getVendorRegisterButton;
 }

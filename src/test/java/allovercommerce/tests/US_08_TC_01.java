@@ -1,5 +1,4 @@
 package allovercommerce.tests;
-
 import allovercommerce.pages.customerpages.*;
 import allovercommerce.utilities.ConfigReader;
 import allovercommerce.utilities.Driver;
@@ -98,9 +97,9 @@ public class US_08_TC_01 {
         //Verify the order is completed successfully
         Assert.assertTrue(customerCheckoutPage.orderSuccessMessage.isDisplayed());
     }
-        @AfterMethod
-        public void closeBrowser(){
-            ReusableMethods.waitFor(3);
-            Driver.closeDriver();
-       }
+//        @AfterMethod
+//        public void closeBrowser(){
+//            ReusableMethods.waitFor(3);
+//            Driver.closeDriver();
+//       }
 }

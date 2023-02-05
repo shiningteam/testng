@@ -75,7 +75,7 @@ public class US_06_TC_01 {
         select2.selectByVisibleText("California");
         ReusableMethods.waitFor(3);
 
-        addressPage.billingZipcode.sendKeys(ConfigReader.getProperty("customer_zip_code"));
+        addressPage.billingZipCode.sendKeys(ConfigReader.getProperty("customer_zip_code"));
         ReusableMethods.waitFor(3);
 
         addressPage.billingPhone.sendKeys(ConfigReader.getProperty("customer_phone_number"));
