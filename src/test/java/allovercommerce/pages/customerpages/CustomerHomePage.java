@@ -7,8 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class CustomerHomePage {
 
-    public CustomerHomePage(){
-        PageFactory.initElements(Driver.getDriver(), this);
+    public CustomerHomePage(){PageFactory.initElements(Driver.getDriver(), this);
     }
 
     @FindBy(linkText="Register")
@@ -56,8 +55,18 @@ public class CustomerHomePage {
     @FindBy(xpath = "//div[@aria-live='polite']")
     public WebElement weakPasswordMessage;
 
+
+
+
+
+
+
+
+
+
     @FindBy(linkText = "Sign In")
     public WebElement signIn;
+
     @FindBy(xpath = "//input[@aria-label='Search']")
     public WebElement searchBar;
 

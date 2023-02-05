@@ -18,6 +18,20 @@ public class VendorHomePage {
     @FindBy(linkText = "Log out")
     public WebElement logOutIcon;
 
+
+    @FindBy(linkText = "My Account")
+    public WebElement myAcountIcon;
+
+
+
+
+
+
+
+
+
+
+
     @FindBy(linkText="Sign In")
     public WebElement VendorSignInIcon;
 

@@ -23,6 +23,12 @@ public class CustomerProductsPage {
     @FindBy(xpath = "//*[@data-id='fbb1175']")
     public WebElement cartIcon;
 
+    @FindBy(xpath = "//button[@value='19895']")
+    public WebElement chessAddToCartButton;
+
+    @FindBy(xpath = "//body/div[2]/main[1]/div[1]/div[1]/div[1]/div[1]/div[1]/a[1]")
+    public WebElement viewCartButton;
+
 
 
 
