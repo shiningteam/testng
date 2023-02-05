@@ -36,7 +36,6 @@ public class US_18_TC_01 {
         ReusableMethods.waitFor(4);
 
     }
-
         @Test
         public void TC_01_Test() throws IOException {
 
@@ -46,12 +45,13 @@ public class US_18_TC_01 {
 
         //Enter username or email address
         vendorRegisterPage.vendorSignInUsernameInput.sendKeys(ConfigReader.getProperty("vendor_username"));
+        ReusableMethods.waitFor(1);
 
         //Enter password
         vendorRegisterPage.vendorSignInPasswordInput.sendKeys(ConfigReader.getProperty("vendor_password"));
 
         // Click the "sign in" button
-        vendorRegisterPage.vendorSignInButton.click();
+        JSUtils.clickElementByJS(vendorRegisterPage.vendorSignInButton);
 
         //Click the my account button and go to my Account
         JSUtils.clickElementByJS(vendorHomePage.myAcountIcon);
@@ -82,25 +82,25 @@ public class US_18_TC_01 {
         ReusableMethods.getScreenshot();
 
         //Click the "URL" box
-        vendorStoreManagerPage.urlBox.click();
+       JSUtils.clickElementByJS(vendorStoreManagerPage.urlBox);
 
        //Enter the URL value
-        vendorStoreManagerPage.urlBox.sendKeys(faker.internet().url());
+       vendorStoreManagerPage.urlBox.sendKeys(faker.internet().url());
 
         //Click the "Button Text" box
-        vendorStoreManagerPage.buttonTextBox.click();
+        JSUtils.clickElementByJS(vendorStoreManagerPage.buttonTextBox);
 
         //Enter the Button Text value
         vendorStoreManagerPage.buttonTextBox.sendKeys(faker.company().buzzword());
 
         //Click the "Price" box
-        vendorStoreManagerPage.priceBox.click();
+        JSUtils.clickElementByJS(vendorStoreManagerPage.priceBox);
 
         //Enter the Price value
         vendorStoreManagerPage.priceBox.sendKeys(faker.number().digits(3));
 
         //Click the "Sale Price" box
-        vendorStoreManagerPage.salePriceBox.click();
+        JSUtils.clickElementByJS(vendorStoreManagerPage.salePriceBox);
 
         //Enter the Sale Price value
         vendorStoreManagerPage.salePriceBox.sendKeys(faker.number().digits(2));
@@ -142,25 +142,25 @@ public class US_18_TC_01 {
         ReusableMethods.getScreenshot();
 
         //Click the "URL" box
-        vendorStoreManagerPage.urlBox.click();
+        JSUtils.clickElementByJS(vendorStoreManagerPage.urlBox);
 
         //Enter the URL value consisting of numbers
         vendorStoreManagerPage.urlBox.sendKeys(faker.number().digits(5));
 
         //Click the "Button Text" box
-        vendorStoreManagerPage.buttonTextBox.click();
+        JSUtils.clickElementByJS(vendorStoreManagerPage.buttonTextBox);
 
         //Enter the Button Text value
         vendorStoreManagerPage.buttonTextBox.sendKeys(faker.company().buzzword());
 
         //Click the "Price" box
-        vendorStoreManagerPage.priceBox.click();
+        JSUtils.clickElementByJS(vendorStoreManagerPage.priceBox);
 
         //Enter the Price value
         vendorStoreManagerPage.priceBox.sendKeys(faker.number().digits(3));
 
         //Click the "Sale Price" box
-        vendorStoreManagerPage.salePriceBox.click();
+        JSUtils.clickElementByJS(vendorStoreManagerPage.salePriceBox);
 
         //Enter the Sale Price value
         vendorStoreManagerPage.salePriceBox.sendKeys(faker.number().digits(2));
@@ -182,7 +182,8 @@ public class US_18_TC_01 {
 
         //Click the my account button
         JSUtils.clickElementByJS(vendorHomePage.myAccountButton);
-        ReusableMethods.waitFor(2);
+        ReusableMethods.waitFor(4);
+
         // Click the "Store Manager" button
         JSUtils.clickElementByJS(vendorMyAccountPage.storeManagerIcon);
 
@@ -209,25 +210,25 @@ public class US_18_TC_01 {
         ReusableMethods.getScreenshot();
 
         //Click the "URL" box
-        vendorStoreManagerPage.urlBox.click();
+        JSUtils.clickElementByJS(vendorStoreManagerPage.urlBox);
 
         //Enter the URL value
         vendorStoreManagerPage.urlBox.sendKeys(faker.internet().url());
 
         //Click the "Button Text" box
-        vendorStoreManagerPage.buttonTextBox.click();
+        JSUtils.clickElementByJS(vendorStoreManagerPage.buttonTextBox);
 
         //Enter the Button Text value
         vendorStoreManagerPage.buttonTextBox.sendKeys(faker.company().buzzword());
 
         //Click the "Price" box
-        vendorStoreManagerPage.priceBox.click();
+        JSUtils.clickElementByJS(vendorStoreManagerPage.priceBox);
 
         //Enter the negative Price value
         vendorStoreManagerPage.priceBox.sendKeys("-50");
 
         //Click the "Sale Price" box
-        vendorStoreManagerPage.salePriceBox.click();
+        JSUtils.clickElementByJS(vendorStoreManagerPage.salePriceBox);
 
         //Enter the negative Sale Price value
         vendorStoreManagerPage.salePriceBox.sendKeys("-30");
