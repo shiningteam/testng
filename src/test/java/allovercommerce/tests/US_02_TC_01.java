@@ -25,7 +25,7 @@ public class US_02_TC_01 {
     public void registerWithAlreadyRegisteredEmail(){
         //User goes to https://allovercommerce.com/
         Driver.getDriver().get(ConfigReader.getProperty("allovercommerce_url"));
-        ReusableMethods.waitFor(1);
+        ReusableMethods.waitFor(2);
         Driver.getDriver().navigate().refresh();
         ReusableMethods.waitFor(2);
 
@@ -34,7 +34,7 @@ public class US_02_TC_01 {
         ReusableMethods.waitFor(2);
     }
     @Test
-    public void TC_01_Test01() throws IOException {
+    public void TC_01_Test() throws IOException {
 
         //User should enter registered username in the Username field
         customerRegisterPage.registerUsernameInput.sendKeys(ConfigReader.getProperty("customer_username"));
@@ -61,7 +61,7 @@ public class US_02_TC_01 {
         ReusableMethods.getScreenshot();
     }
     @Test
-    public void TC_01_Test02() throws IOException {
+    public void TC_02_Test() throws IOException {
 
         //User should enter unregistered username in the Username field
         customerRegisterPage.registerUsernameInput.sendKeys(faker.name().bloodGroup());
@@ -89,7 +89,7 @@ public class US_02_TC_01 {
         ReusableMethods.getScreenshot();
     }
     @Test
-    public void TC_01_Test03() throws IOException {
+    public void TC_03_Test() throws IOException {
 
         //User should enter registered username in the Username field
         customerRegisterPage.registerUsernameInput.sendKeys(ConfigReader.getProperty("customer_username"));
@@ -119,7 +119,7 @@ public class US_02_TC_01 {
         ReusableMethods.getScreenshot();
     }
     @Test
-    public void TC_01_Test04() throws IOException {
+    public void TC_04_Test() throws IOException {
 
         //User should enter registered username in the Username field
         customerRegisterPage.registerUsernameInput.sendKeys(ConfigReader.getProperty("customer_username"));
@@ -144,13 +144,11 @@ public class US_02_TC_01 {
         String actualMessage=customerRegisterPage.alreadyRegisteredMessage.getText();
         String expectedMessage="An account is already registered with that username. Please choose another.";
 
-
         actions.sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).perform();
         ReusableMethods.getScreenshot();
     }
 //    @AfterMethod
 //    public void closeBrowser(){
-//        ReusableMethods.waitFor(5);
 //        Driver.closeDriver();
 //    }
 }

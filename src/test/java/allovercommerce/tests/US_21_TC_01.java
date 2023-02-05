@@ -1,25 +1,26 @@
 package allovercommerce.tests;
 
-<<<<<<< Updated upstream
+
 import allovercommerce.pages.vendorpages.*;
 import allovercommerce.pages.customerpages.CustomerHomePage;
 import allovercommerce.pages.customerpages.CustomerMyAccountPage;
 import allovercommerce.pages.customerpages.CustomerRegisterPage;
 import allovercommerce.pages.customerpages.CustomerShoppingCartPage;
-=======
+
 import allovercommerce.pages.customerpages.*;
 import allovercommerce.pages.vendorpages.*;
->>>>>>> Stashed changes
+
 import allovercommerce.utilities.ConfigReader;
 import allovercommerce.utilities.Driver;
 import allovercommerce.utilities.JSUtils;
 import allovercommerce.utilities.ReusableMethods;
 import com.github.javafaker.Faker;
-import org.apache.commons.math3.filter.KalmanFilter;
+
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
+
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
@@ -114,17 +115,23 @@ public class US_21_TC_01 {
         Assert.assertTrue(vendorCouponsPage.showOnStoreCheckbox.isEnabled());
 
         //Click the submit button
-        JSUtils.scrollDownByJS();
         ReusableMethods.waitFor(2);
         JSUtils.clickElementByJS(vendorCouponsPage.submitButton);
         ReusableMethods.getScreenshot();
 
         ReusableMethods.waitFor(4);
 
-        //Click the coupons link
+        //Click the coupons link and verify generated coupons should be visible.
         JSUtils.clickElementByJS(vendorStoreManagerPage.couponsButton);
-        List<WebElement> codeList=new ArrayList<>();
-
+        ReusableMethods.waitFor(2);
+        List<WebElement> codeList=Driver.getDriver().findElements(By.xpath("//tbody//tr//td"));
+        List<String > codeList2= new ArrayList<>();
+        for (WebElement w : codeList) {
+            codeList2.add(w.getText());
+        }
+        System.out.println(codeList2);
+        ReusableMethods.waitFor(2);
+        Assert.assertTrue(codeList2.contains(code));
 
         // Click "Sign Out" button
         JSUtils.clickElementByJS(vendorStoreManagerPage.signOutIcon);
@@ -145,7 +152,7 @@ public class US_21_TC_01 {
         JSUtils.clickElementByJS(customerMyAccountPage.alloverCommerceButton);
         ReusableMethods.waitFor(4);
 
-//        //Click the search button and search Chess
+       //Click the search button and search Chess
         //SUtils.clickElementByJS(customerHomePage.searchIcon);
         ReusableMethods.waitForVisibility(customerHomePage.searchBar,10);
         customerHomePage.searchBar.sendKeys("Chess"+Keys.ENTER);
@@ -171,10 +178,6 @@ public class US_21_TC_01 {
         JSUtils.clickElementByJS(customerShoppingCartPage.applyCouponButton);
         ReusableMethods.waitFor(2);
        ReusableMethods.getScreenshot();
-
-
-//    Generated coupons should be visible.
-
 
     }
 }

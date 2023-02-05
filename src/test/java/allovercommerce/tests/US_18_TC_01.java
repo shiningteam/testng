@@ -33,7 +33,12 @@ public class US_18_TC_01 {
         // The user goes to ''https://allovercommerce.com/''
         Driver.getDriver().get(ConfigReader.getProperty("allovercommerce_url"));
         Driver.getDriver().navigate().refresh();
-        ReusableMethods.waitFor(5);
+        ReusableMethods.waitFor(4);
+
+    }
+
+        @Test
+        public void TC_01_Test() throws IOException {
 
         // Click "Sign in" button
         JSUtils.clickElementByJS(vendorHomePage.vendorSignInIcon);
@@ -75,9 +80,6 @@ public class US_18_TC_01 {
         //Verify External/Affiliate Product option is selectable"
         Assert.assertTrue(vendorStoreManagerPage.simpleProductDropdown.isEnabled());
         ReusableMethods.getScreenshot();
-    }
-    @Test
-    public void TC_01_Test01() throws IOException {
 
         //Click the "URL" box
         vendorStoreManagerPage.urlBox.click();
@@ -109,7 +111,36 @@ public class US_18_TC_01 {
 
     }
     @Test
-    public void TC_01_Test02() throws IOException {
+    public void TC_02_Test() throws IOException {
+
+        //Click the my account button
+        JSUtils.clickElementByJS(vendorHomePage.myAccountButton);
+
+        // Click the "Store Manager" button
+        JSUtils.clickElementByJS(vendorMyAccountPage.storeManagerIcon);
+
+        //Click the "Products" button
+        JSUtils.clickElementByJS(vendorStoreManagerPage.productsIcon);
+
+        // Click the "Add New" button
+        JSUtils.clickElementByJS(vendorStoreManagerPage.addNewIcon);
+        ReusableMethods.waitFor(2);
+
+        //Click the "Simple Product" dropbox
+        Select select=new Select(vendorStoreManagerPage.simpleProductDropdown);
+
+        //Verify Simple Product dropbox is selectable
+        Assert.assertTrue(vendorStoreManagerPage.simpleProductDropdown.isEnabled());
+        ReusableMethods.getScreenshot();
+
+        //Choose "External/Affiliate Product" option
+        select.selectByVisibleText("External/Affiliate Product");
+        ReusableMethods.waitFor(2);
+
+        //Verify External/Affiliate Product option is selectable"
+        Assert.assertTrue(vendorStoreManagerPage.simpleProductDropdown.isEnabled());
+        ReusableMethods.getScreenshot();
+
         //Click the "URL" box
         vendorStoreManagerPage.urlBox.click();
 
@@ -147,7 +178,35 @@ public class US_18_TC_01 {
     }
 
     @Test
-    public void TC_01_Test03() throws IOException {
+    public void TC_03_Test() throws IOException {
+
+        //Click the my account button
+        JSUtils.clickElementByJS(vendorHomePage.myAccountButton);
+        ReusableMethods.waitFor(2);
+        // Click the "Store Manager" button
+        JSUtils.clickElementByJS(vendorMyAccountPage.storeManagerIcon);
+
+        //Click the "Products" button
+        JSUtils.clickElementByJS(vendorStoreManagerPage.productsIcon);
+
+        // Click the "Add New" button
+        JSUtils.clickElementByJS(vendorStoreManagerPage.addNewIcon);
+        ReusableMethods.waitFor(2);
+
+        //Click the "Simple Product" dropbox
+        Select select=new Select(vendorStoreManagerPage.simpleProductDropdown);
+
+        //Verify Simple Product dropbox is selectable
+        Assert.assertTrue(vendorStoreManagerPage.simpleProductDropdown.isEnabled());
+        ReusableMethods.getScreenshot();
+
+        //Choose "External/Affiliate Product" option
+        select.selectByVisibleText("External/Affiliate Product");
+        ReusableMethods.waitFor(2);
+
+        //Verify External/Affiliate Product option is selectable"
+        Assert.assertTrue(vendorStoreManagerPage.simpleProductDropdown.isEnabled());
+        ReusableMethods.getScreenshot();
 
         //Click the "URL" box
         vendorStoreManagerPage.urlBox.click();
