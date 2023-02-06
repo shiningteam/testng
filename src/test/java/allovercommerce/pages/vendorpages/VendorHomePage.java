@@ -24,6 +24,10 @@ public class VendorHomePage {
     @FindBy(linkText = "My Account")
     public WebElement myAcountIcon;
 
+    @FindBy(xpath = "//button[@value='Sign In']")
+    public WebElement vendorSignInButton;
+
+
 
     @FindBy(linkText="Sign In")
     public WebElement VendorSignInIcon;
@@ -84,4 +88,15 @@ public class VendorHomePage {
 
     @FindBy(linkText = "Become a Vendor")
     public WebElement becomeAVendorButton;
+
+
+
+
+
+
+
+
+
+
+
 }
