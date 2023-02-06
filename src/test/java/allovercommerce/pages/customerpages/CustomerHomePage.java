@@ -73,6 +73,9 @@ public class CustomerHomePage {
 
 
 
+
+
+
     @FindBy(linkText = "Sign In")
     public WebElement signIn;
 

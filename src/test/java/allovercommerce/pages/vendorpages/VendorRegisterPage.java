@@ -24,7 +24,7 @@ public class VendorRegisterPage {
     @FindBy(linkText = "Verification Code")
     public WebElement vendorVerificationCode;
 
-    @FindBy(id = "passoword")
+    @FindBy(xpath = "(//input[@type='password'])[1]")
     public WebElement vendorPassword;
 
     @FindBy(id = "confirm_pwd")
@@ -32,4 +32,17 @@ public class VendorRegisterPage {
 
     @FindBy(xpath = "value='Register'")
     public WebElement getVendorRegisterButton;
+
+    @FindBy(xpath = "//div[@class='short']")
+    public WebElement tooShortPassword;
+
+    @FindBy(xpath = "//div[@class='weak']")
+    public WebElement weakPassword;
+
+    @FindBy(xpath = "//div[@class='good']")
+    public WebElement goodPassword;
+
+    @FindBy(xpath = "//div[@class='strong']")
+    public WebElement strongPassword;
+
 }
