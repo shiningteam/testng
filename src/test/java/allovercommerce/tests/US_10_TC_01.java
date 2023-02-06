@@ -44,10 +44,10 @@ public class US_10_TC_01 {
         // 3- User clicks "Become a Vendor".
         ReusableMethods.waitFor(2);
         JSUtils.clickElementByJS(vendorHomePage.becomeAVendorButton);
-        ReusableMethods.waitFor(5);
+        ReusableMethods.waitFor(2);
 
         // 4- User enters the "short"  Password.
-        ReusableMethods.waitFor(7);
+        ReusableMethods.waitFor(2);
         vendorRegisterPage.vendorPassword.sendKeys(ConfigReader.getProperty("too_short_password"));
 
         // 5- User should see the "Too Short" message on the console and verify it.
@@ -55,7 +55,7 @@ public class US_10_TC_01 {
         Assert.assertTrue(vendorRegisterPage.tooShortPassword.isDisplayed());
         ReusableMethods.waitFor(2);
 
-        Driver.closeDriver();
+//        Driver.closeDriver();
     }
     @Test
     public void test02() {
@@ -74,7 +74,7 @@ public class US_10_TC_01 {
         ReusableMethods.waitFor(5);
 
         // 6- User enters a  "weak" Password.
-        ReusableMethods.waitFor(7);
+        ReusableMethods.waitFor(2);
         vendorRegisterPage.vendorPassword.sendKeys(ConfigReader.getProperty("weak_password"));
 
         // 7- User should see the "Weak" message on the console and verify it.
@@ -82,7 +82,7 @@ public class US_10_TC_01 {
         Assert.assertTrue(vendorRegisterPage.weakPassword.isDisplayed());
         ReusableMethods.waitFor(2);
 
-        Driver.closeDriver();
+//        Driver.closeDriver();
 
     }
 
@@ -103,14 +103,14 @@ public class US_10_TC_01 {
         ReusableMethods.waitFor(5);
 
         // 8- User enters a  "good" Password.
-        ReusableMethods.waitFor(7);
+        ReusableMethods.waitFor(2);
         vendorRegisterPage.vendorPassword.sendKeys(ConfigReader.getProperty("good_password"));
 
         // 9- User should see the "Good" message on the console and verify it.
         ReusableMethods.waitFor(2);
         Assert.assertTrue(vendorRegisterPage.goodPassword.isDisplayed());
         ReusableMethods.waitFor(2);
-        Driver.closeDriver();
+        //Driver.closeDriver();
     }
     @Test
     public void test04() {
@@ -129,7 +129,7 @@ public class US_10_TC_01 {
         ReusableMethods.waitFor(5);
 
         // 10- User enters a "strong" Password.
-        ReusableMethods.waitFor(7);
+        ReusableMethods.waitFor(2);
         vendorRegisterPage.vendorPassword.sendKeys(ConfigReader.getProperty("strong_password"));
 
         // 11- User should see the "Strong" message on the console and verify it.
@@ -138,10 +138,4 @@ public class US_10_TC_01 {
         ReusableMethods.waitFor(2);
         Driver.closeDriver();
     }
-//    @AfterMethod
-//    public void closeBrowser(){
-//        ReusableMethods.waitFor(3);
-//        Driver.closeDriver();
-//    }
-
 }
