@@ -50,16 +50,36 @@ public class VendorStoreManagerPage {
     @FindBy(linkText = "Coupons")
     public WebElement couponsButton;
 
+    @FindBy( id="pro_title")
+    public WebElement ProductTitle;
 
+    @FindBy( id= "wcfm_products_simple_draft_button")
+    public WebElement DraftButton;
 
     @FindBy(xpath = "//a[.='Store Manager']")
     public WebElement StoreManagerButton;
+//
+//    @FindBy(xpath = "//span[.='Products']")
+//    public WebElement ProductsButton;
 
     @FindBy(linkText="Products")
     public WebElement ProductsButton;
 
+
     @FindBy(xpath = "//span[.='Add New']")
     public WebElement AddNewButton;
+
+
+
+//    @FindBy(xpath = "//a[.='Store Manager']")
+//    public WebElement StoreManagerButton;
+//
+//    @FindBy(linkText="Products")
+//    public WebElement ProductsButton;
+//
+//    @FindBy(xpath = "//span[.='Add New']")
+//    public WebElement AddNewButton;
+
 
     @FindBy(xpath= "//button[@id='insert-media-button']")
     public WebElement addMedia;
