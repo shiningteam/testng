@@ -46,8 +46,8 @@ public class VendorBillingAddressPage {
 
     @FindBy(id="billing_email")
     public WebElement BillingEmail;
-
-    @FindBy(name="save_address")
+    // @FindBy(name="save_address")
+    @FindBy(id="woocommerce-edit-address-nonce")
     public WebElement SaveAddressButton;
 
     @FindBy(xpath = "//a[@class='edit btn btn-link btn-primary btn-underline mb-4']")

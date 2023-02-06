@@ -118,7 +118,11 @@ public class US_01_TC_01 {
 
         Assert.assertEquals(errorMessage,"Please enter a valid account username.");
 
+
         //ReusableMethods.getScreenshot("negativeLoginScreenshot2");
+
+        ReusableMethods.getScreenshot("negativeLoginScreenshot2");
+
         }
 
 
@@ -156,7 +160,9 @@ public class US_01_TC_01 {
         System.out.println(errorMessage);
         Assert.assertFalse(false,"Please enter a valid email address.");
 
-        //ReusableMethods.getScreenshot("negativeLoginScreenshot3");
+
+        //ReusableMethods.getScreenshot("negativeLoginScreenshot3"
+        ReusableMethods.getScreenshot("negativeLoginScreenshot3");
 
 
 

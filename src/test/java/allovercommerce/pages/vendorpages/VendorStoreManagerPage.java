@@ -71,15 +71,15 @@ public class VendorStoreManagerPage {
 
 
 
+//    @FindBy(xpath = "//a[.='Store Manager']")
+//    public WebElement StoreManagerButton;
+//
+//    @FindBy(linkText="Products")
+//    public WebElement ProductsButton;
+//
+//    @FindBy(xpath = "//span[.='Add New']")
+//    public WebElement AddNewButton;
 
-    @FindBy(xpath = "//a[.='Store Manager']")
-    public WebElement StoreManagerButton;
-
-    @FindBy(linkText="Products")
-    public WebElement ProductsButton;
-
-    @FindBy(xpath = "//span[.='Add New']")
-    public WebElement AddNewButton;
 
     @FindBy(xpath= "//button[@id='insert-media-button']")
     public WebElement addMedia;

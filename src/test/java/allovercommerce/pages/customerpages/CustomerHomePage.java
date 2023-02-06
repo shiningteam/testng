@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class CustomerHomePage {
 
-    public CustomerHomePage(){
+    public CustomerHomePage() {
         PageFactory.initElements(Driver.getDriver(), this);
 
     }
@@ -45,7 +45,6 @@ public class CustomerHomePage {
 
 
 
-
     @FindBy(id = "register-policy")
     public WebElement agreeCheckbox;
 
@@ -58,7 +57,6 @@ public class CustomerHomePage {
 
     @FindBy(linkText = "Wishlist")
     public WebElement WishlistButton;
-
 
     @FindBy(xpath = "(//p[@class='submit-status'])[2]")
     public WebElement errorMessage;

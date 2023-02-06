@@ -21,7 +21,7 @@ public class VendorInventoryPage {
     public WebElement InventorySKU;
     @FindBy(id = "manage_stock")
     public WebElement ManageStockBox;
-    @FindBy(id = "stock_qty")
+    @FindBy(id="stock_qty")
     public WebElement StockQty;
     @FindBy(id = "backorders")
     public WebElement AllowBackordersOptions;
@@ -38,7 +38,7 @@ public class VendorInventoryPage {
     public WebElement ProductWeight;
     @FindBy(id = "length")
     public WebElement ProductLength;
-    @FindBy(id = "widght")
+    @FindBy(id="width")
     public WebElement ProductWidth;
     @FindBy(id = "height")
     public WebElement ProductHeight;
@@ -57,12 +57,12 @@ public class VendorInventoryPage {
     @FindBy(xpath = "//input[@class='select2-search__field']")
     //@FindBy(id="attributes_value_1")
     public WebElement Colar0ptions;
-//    @FindBy(id = "attributes_is_visible_1")
-//    public WebElement ColarAttributesVisibleCheckBox;
+    @FindBy(id = "attributes_is_visible_1")
+    public WebElement ColarAttributesVisibleCheckBox;
 
 
-//    @FindBy(id = "attributes_is_active_2")
-//    public WebElement AttributesSizeActivationCheckBox;
+   @FindBy(id = "attributes_is_active_2")
+   public WebElement AttributesSizeActivationCheckBox;
     @FindBy(id="attributes_value_2")
     public WebElement Size0ptions;
     @FindBy(id = "attributes_is_visible_2")

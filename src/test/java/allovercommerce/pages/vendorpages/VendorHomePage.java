@@ -57,17 +57,21 @@ public class VendorHomePage {
     @FindBy(linkText="Sign In")
     public WebElement VendorSignInIcon;
 
-    @FindBy(id="username")
-    public WebElement username;
 
-    @FindBy(id="password")
-    public WebElement password;
+//    @FindBy(id="username")
+//    public WebElement username;
+//
+//    @FindBy(id="password")
+//    public WebElement password;
+//
+//    @FindBy(xpath = "//button[.='Sign In']")
+//    public WebElement VendorSignInButton;
+//
+//    @FindBy(linkText="My Account")
+//    public WebElement myAccountButton;
 
-    @FindBy(xpath = "//button[.='Sign In']")
-    public WebElement VendorSignInButton;
 
-    @FindBy(linkText="My Account")
-    public WebElement myAccountButton;
+
 
     @FindBy(linkText = "Register")
     public WebElement vendorRegisterButton;
