@@ -1,14 +1,15 @@
 package allovercommerce.tests;
-
-import allovercommerce.pages.customerpages.CustomerHomePage;
+import allovercommerce.pages.customerpages.*;
 import allovercommerce.utilities.ConfigReader;
 import allovercommerce.utilities.Driver;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import allovercommerce.utilities.JSUtils;
+import allovercommerce.utilities.ReusableMethods;
+import org.testng.Assert;
+import org.testng.annotations.*;
 
 public class US_08_TC_01 {
 
-    @BeforeTest
+    @BeforeMethod
     public void HomePage() {
         CustomerHomePage customerHomePage = new CustomerHomePage();
         //User goes to https://allovercommerce.com/
@@ -19,46 +20,86 @@ public class US_08_TC_01 {
         customerHomePage.username.sendKeys(ConfigReader.getProperty("customer_username"));
         customerHomePage.password.sendKeys(ConfigReader.getProperty("customer_password"));
         customerHomePage.submit.click();
+
     }
 
         @Test
         public void TC_01_test() {
-        //3-Go to the item that you want to add the wishlist
-        //4-Click on the "heart" icon
-        //5-Go to the top of the page and click on "Wishlist" button
-        //6-Verify the item that added to the wishlist is displayed
-    }
+        //Go to the item that you want to add the wishlist and click on the "heart" icon
+        CustomerProductsPage customerProductsPage = new CustomerProductsPage();
+        JSUtils.scrollDownByJS();
+        JSUtils.clickElementByJS(customerProductsPage.backpackHeartButton);
 
+        //Click on "Wishlist" button
+        CustomerHomePage customerHomePage = new CustomerHomePage();
+        ReusableMethods.waitFor(3);
+        JSUtils.clickElementByJS(customerHomePage.WishlistButton);
+
+        //Verify the item that added to the wishlist is displayed
+        CustomerWishListPage customerWishListPage = new CustomerWishListPage();
+        ReusableMethods.verifyElementDisplayed(customerWishListPage.backpackProduct);
+
+    }
         @Test
         public void TC_02_test() {
-        //5-click on "Wishlist" button
-        //6-Verify the items that added to the wishlist is displayed
-    }
+        //Click on "Wishlist" button
+        CustomerHomePage customerHomePage = new CustomerHomePage();
+        ReusableMethods.waitFor(3);
+        JSUtils.clickElementByJS(customerHomePage.WishlistButton);
 
+        //Verify the wishlist page is displayed properly
+        CustomerWishListPage customerWishListPage = new CustomerWishListPage();
+        Assert.assertTrue(customerWishListPage.wishlistPageTitle.isDisplayed());
+        Assert.assertEquals("Wishlist", customerWishListPage.wishlistPageTitle.getText());
+
+        //Click on "Quick View" button
+        JSUtils.clickElementByJS(customerWishListPage.backpackQuickViewButton);
+
+        //Verify the attributes of the item on the Wishlist is displayed
+        Assert.assertTrue(customerWishListPage.backpackQuickViewPage.isDisplayed());
+
+        //Close the attributes of the item page
+        ReusableMethods.waitFor(3);
+        JSUtils.clickElementByJS(customerWishListPage.backpackQuickViewCloseButton);
+    }
         @Test
         public void TC_03_test() {
+
+        CustomerProductsPage customerProductsPage = new CustomerProductsPage();
+        JSUtils.scrollDownByJS();
+        JSUtils.clickElementByJS(customerProductsPage.backpackHeartButton);
+
         //Click on "Wishlist" button
-        //Verify the wishlist page is displayed expected
-        //Click on "Quick View" button
-        //Verify the attributes of the item on the Wishlist is displayed
-        //Close the attributes of the item page
-    }
-        @Test
-        public void TC_04_test() {
+        CustomerHomePage customerHomePage = new CustomerHomePage();
+        ReusableMethods.waitFor(3);
+        JSUtils.clickElementByJS(customerHomePage.WishlistButton);
 
-        //10-Click on the "Add to Cart" button
-        //11-Click on the "Cart" button
-        //12- Click on the "View Cart" button
-        //13-Verify the item that added to the cart is displayed
-        //14- Click on the "Proceed to Checkout" button
-        //15-Verify the all required fields are filled
-        //16-Click on "Place Order" button
-        //17-Verify the order is completed successfully
+        //Click on the "Add to Cart" button
+        CustomerWishListPage customerWishListPage = new CustomerWishListPage();
+        ReusableMethods.waitFor(2);
+        JSUtils.clickElementByJS(customerWishListPage.backpackAddToCartButton);
 
+        //Click on the "Cart" button
+        ReusableMethods.waitFor(2);
+        JSUtils.clickElementByJS(customerWishListPage.CartButton);
+
+        //Verify the item that added to the cart is displayed
+        CustomerShoppingCartPage customerShoppingCartPage = new CustomerShoppingCartPage();
+        Assert.assertTrue(customerShoppingCartPage.backpackProduct.isDisplayed());
+
+        //Click on the "Proceed to Checkout" button
+        JSUtils.clickElementByJS(customerShoppingCartPage.proceedToCheckoutButton);
+
+        //Click on "Place Order" button
+        CustomerCheckoutPage customerCheckoutPage = new CustomerCheckoutPage();
+        JSUtils.clickElementByJS(customerCheckoutPage.placeOrderButton);
+
+        //Verify the order is completed successfully
+        Assert.assertTrue(customerCheckoutPage.orderSuccessMessage.isDisplayed());
     }
-//    @AfterTest
-//    public void closeBrowser(){
-//        ReusableMethods.waitFor(3);
-//        Driver.closeDriver();
-//   }
+//        @AfterMethod
+//        public void closeBrowser(){
+//            ReusableMethods.waitFor(3);
+//            Driver.closeDriver();
+//       }
 }

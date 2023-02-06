@@ -19,11 +19,36 @@ public class VendorMyAccountPage {
     public WebElement storeManagerIcon;
 
 
+
     @FindBy(linkText="Addresses")
     public WebElement AddressesButton;
 
     @FindBy(xpath = "//a[@class='edit btn btn-link btn-primary btn-underline mb-4']")
     public WebElement AddressAddButton;
+
+    @FindBy(linkText = "Log out")
+    public WebElement logOutIcon;
+
+    @FindBy(xpath = "//a[.='Orders']")
+    public WebElement orders;
+
+    @FindBy(xpath = "//a[@class='woocommerce-Button button btn btn-link btn-underline btn-icon-right']")
+    public WebElement browseProducts;
+
+    @FindBy(linkText = "1984 George Orwell")
+    public WebElement georgeOrwell;
+
+    @FindBy(xpath = "//button[contains(text(),'Add to cart')]")
+    public WebElement addToCart;
+
+    @FindBy(xpath = "//a[@class='cart-toggle']")
+    public WebElement cart;
+
+    @FindBy(xpath = "//a[contains(text(),'Checkout')]")
+    public WebElement checkout;
+
+
+
 
 
 

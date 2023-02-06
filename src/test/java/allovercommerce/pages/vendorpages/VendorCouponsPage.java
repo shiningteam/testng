@@ -34,7 +34,7 @@ public class VendorCouponsPage {
     @FindBy(className = "ui-datepicker-year")
     public WebElement yearDropdown;
 
-    @FindBy(xpath = "(//tbody//tr//td[@class=' ui-datepicker-week-end '])[10]")
+    @FindBy(xpath = "(//td//a[@class='ui-state-default'])[31]")
     public WebElement decDay;
 
     @FindBy(id = "free_shipping")

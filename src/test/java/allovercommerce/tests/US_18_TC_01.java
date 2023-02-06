@@ -13,6 +13,8 @@ import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -24,116 +26,44 @@ public class US_18_TC_01 {
     VendorStoreManagerPage vendorStoreManagerPage=new VendorStoreManagerPage();
     VendorMyAccountPage vendorMyAccountPage=new VendorMyAccountPage();
     Faker faker=new Faker();
+    Actions actions=new Actions(Driver.getDriver());
 
-    @Test
-    public void externalAffiliateOption01() throws IOException {
-
+    @BeforeMethod
+    public void externalAffiliateOption() throws IOException {
         // The user goes to ''https://allovercommerce.com/''
         Driver.getDriver().get(ConfigReader.getProperty("allovercommerce_url"));
+        Driver.getDriver().navigate().refresh();
+        ReusableMethods.waitFor(4);
+
+    }
+        @Test
+        public void TC_01_Test() throws IOException {
 
         // Click "Sign in" button
-        vendorHomePage.vendorSignInIcon.click();
-
+        JSUtils.clickElementByJS(vendorHomePage.vendorSignInIcon);
         ReusableMethods.waitFor(2);
 
         //Enter username or email address
         vendorRegisterPage.vendorSignInUsernameInput.sendKeys(ConfigReader.getProperty("vendor_username"));
+        ReusableMethods.waitFor(1);
 
-       //Enter password
+        //Enter password
         vendorRegisterPage.vendorSignInPasswordInput.sendKeys(ConfigReader.getProperty("vendor_password"));
 
         // Click the "sign in" button
-        vendorRegisterPage.vendorSignInButton.click();
+        JSUtils.clickElementByJS(vendorRegisterPage.vendorSignInButton);
 
-        ReusableMethods.waitFor(3);
-
-        //Click the Sign Out button and go to my Account
-        vendorHomePage.signOutIcon.click();
-
-        // Click the "Store Manager" button
-        vendorMyAccountPage.storeManagerIcon.click();
-
-        ReusableMethods.waitForVisibility(vendorStoreManagerPage.productsIcon, 4);
-
-        //Click the "Products" button
-        JSUtils.clickElementByJS(vendorStoreManagerPage.productsIcon);
-
-        ReusableMethods.waitForVisibility(vendorStoreManagerPage.addNewIcon, 3);
-
-        // Click the "Add New" button
-        vendorStoreManagerPage.addNewIcon.click();
-
-        ReusableMethods.waitFor(2);
-
-        //Click the "Simple Product" dropbox
-        Select select=new Select(vendorStoreManagerPage.simpleProductDropdown);
-
-
-        //Verify Simple Product dropbox is selectable
-        Assert.assertTrue(vendorStoreManagerPage.simpleProductDropdown.isEnabled());
-
-        ReusableMethods.getScreenshot();
-
-        //Choose "External/Affiliate Product" option
-        select.selectByVisibleText("External/Affiliate Product");
-
-        ReusableMethods.waitFor(2);
-
-        //Verify External/Affiliate Product option is selectable"
-        Assert.assertTrue(vendorStoreManagerPage.simpleProductDropdown.isEnabled());
-
-        ReusableMethods.getScreenshot();
-
-        //Click the "URL" box
-        vendorStoreManagerPage.urlBox.click();
-
-       //Enter the URL value
-        vendorStoreManagerPage.urlBox.sendKeys(faker.internet().url());
-
-        //Click the "Button Text" box
-        vendorStoreManagerPage.buttonTextBox.click();
-
-        //Enter the Button Text value
-        vendorStoreManagerPage.buttonTextBox.sendKeys(faker.company().buzzword());
-
-        //Click the "Price" box
-        vendorStoreManagerPage.priceBox.click();
-
-        //Enter the Price value
-        vendorStoreManagerPage.priceBox.sendKeys(faker.number().digits(3));
-
-        //Click the "Sale Price" box
-        vendorStoreManagerPage.salePriceBox.click();
-
-        //Enter the Sale Price value
-        vendorStoreManagerPage.salePriceBox.sendKeys(faker.number().digits(2));
-
-        //These values should be able to entered in the boxs
-        ReusableMethods.getScreenshot();
-
-    }
-
-    @Test
-    public void externalAffiliateOption02() throws IOException {
-
-        // The user goes to ''https://allovercommerce.com/''
-        Driver.getDriver().get(ConfigReader.getProperty("allovercommerce_url"));
-
-
-        //ReusableMethods.waitForPageToLoad(10);
-
-        //Click the Sign Out button and go to my Account
-        JSUtils.clickElementByJS(vendorHomePage.signOutIcon);
+        //Click the my account button and go to my Account
+        JSUtils.clickElementByJS(vendorHomePage.myAcountIcon);
 
         // Click the "Store Manager" button
         JSUtils.clickElementByJS(vendorMyAccountPage.storeManagerIcon);
 
         //Click the "Products" button
-       JSUtils.clickElementByJS(vendorStoreManagerPage.productsIcon);
+        JSUtils.clickElementByJS(vendorStoreManagerPage.productsIcon);
 
         // Click the "Add New" button
         JSUtils.clickElementByJS(vendorStoreManagerPage.addNewIcon);
-
         ReusableMethods.waitFor(2);
 
         //Click the "Simple Product" dropbox
@@ -141,74 +71,127 @@ public class US_18_TC_01 {
 
         //Verify Simple Product dropbox is selectable
         Assert.assertTrue(vendorStoreManagerPage.simpleProductDropdown.isEnabled());
-
         ReusableMethods.getScreenshot();
 
         //Choose "External/Affiliate Product" option
         select.selectByVisibleText("External/Affiliate Product");
-
         ReusableMethods.waitFor(2);
 
         //Verify External/Affiliate Product option is selectable"
         Assert.assertTrue(vendorStoreManagerPage.simpleProductDropdown.isEnabled());
-
         ReusableMethods.getScreenshot();
 
         //Click the "URL" box
-        vendorStoreManagerPage.urlBox.click();
+       JSUtils.clickElementByJS(vendorStoreManagerPage.urlBox);
 
-        //Enter the URL value
-        vendorStoreManagerPage.urlBox.sendKeys(faker.number().digits(5));
+       //Enter the URL value
+       vendorStoreManagerPage.urlBox.sendKeys(faker.internet().url());
 
         //Click the "Button Text" box
-        vendorStoreManagerPage.buttonTextBox.click();
+        JSUtils.clickElementByJS(vendorStoreManagerPage.buttonTextBox);
 
         //Enter the Button Text value
         vendorStoreManagerPage.buttonTextBox.sendKeys(faker.company().buzzword());
 
         //Click the "Price" box
-        vendorStoreManagerPage.priceBox.click();
+        JSUtils.clickElementByJS(vendorStoreManagerPage.priceBox);
 
         //Enter the Price value
         vendorStoreManagerPage.priceBox.sendKeys(faker.number().digits(3));
 
         //Click the "Sale Price" box
-        vendorStoreManagerPage.salePriceBox.click();
+        JSUtils.clickElementByJS(vendorStoreManagerPage.salePriceBox);
 
         //Enter the Sale Price value
         vendorStoreManagerPage.salePriceBox.sendKeys(faker.number().digits(2));
+        ReusableMethods.waitFor(2);
+
+        //These values should be able to entered in the boxs
+        ReusableMethods.getScreenshot();
+
+    }
+    @Test
+    public void TC_02_Test() throws IOException {
+
+        //Click the my account button
+        JSUtils.clickElementByJS(vendorHomePage.myAccountButton);
+
+        // Click the "Store Manager" button
+        JSUtils.clickElementByJS(vendorMyAccountPage.storeManagerIcon);
+
+        //Click the "Products" button
+        JSUtils.clickElementByJS(vendorStoreManagerPage.productsIcon);
+
+        // Click the "Add New" button
+        JSUtils.clickElementByJS(vendorStoreManagerPage.addNewIcon);
+        ReusableMethods.waitFor(2);
+
+        //Click the "Simple Product" dropbox
+        Select select=new Select(vendorStoreManagerPage.simpleProductDropdown);
+
+        //Verify Simple Product dropbox is selectable
+        Assert.assertTrue(vendorStoreManagerPage.simpleProductDropdown.isEnabled());
+        ReusableMethods.getScreenshot();
+
+        //Choose "External/Affiliate Product" option
+        select.selectByVisibleText("External/Affiliate Product");
+        ReusableMethods.waitFor(2);
+
+        //Verify External/Affiliate Product option is selectable"
+        Assert.assertTrue(vendorStoreManagerPage.simpleProductDropdown.isEnabled());
+        ReusableMethods.getScreenshot();
+
+        //Click the "URL" box
+        JSUtils.clickElementByJS(vendorStoreManagerPage.urlBox);
+
+        //Enter the URL value consisting of numbers
+        vendorStoreManagerPage.urlBox.sendKeys(faker.number().digits(5));
+
+        //Click the "Button Text" box
+        JSUtils.clickElementByJS(vendorStoreManagerPage.buttonTextBox);
+
+        //Enter the Button Text value
+        vendorStoreManagerPage.buttonTextBox.sendKeys(faker.company().buzzword());
+
+        //Click the "Price" box
+        JSUtils.clickElementByJS(vendorStoreManagerPage.priceBox);
+
+        //Enter the Price value
+        vendorStoreManagerPage.priceBox.sendKeys(faker.number().digits(3));
+
+        //Click the "Sale Price" box
+        JSUtils.clickElementByJS(vendorStoreManagerPage.salePriceBox);
+
+        //Enter the Sale Price value
+        vendorStoreManagerPage.salePriceBox.sendKeys(faker.number().digits(2));
+        ReusableMethods.waitFor(2);
 
         //These values should be able to entered in the boxs
         ReusableMethods.getScreenshot();
 
         //When click the Summit button there is no warning about url
         JSUtils.clickElementByJS(vendorStoreManagerPage.submitButton);
-        Actions actions=new Actions(Driver.getDriver());
-        actions.sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN);
+        ReusableMethods.waitFor(2);
+
         Assert.assertFalse(vendorStoreManagerPage.warningBox.getText().contains("url"));
         ReusableMethods.getScreenshot();
     }
 
     @Test
-    public void externalAffiliateOption03() throws IOException {
+    public void TC_03_Test() throws IOException {
 
-        // The user goes to ''https://allovercommerce.com/''
-        Driver.getDriver().get(ConfigReader.getProperty("allovercommerce_url"));
-        //ReusableMethods.waitForPageToLoad(10);
-
-        //Click the Sign Out button and go to my Account
-        ReusableMethods.waitForClickablility(vendorHomePage.signOutIcon, 10);
-        ReusableMethods.waitFor(2);
+        //Click the my account button
+        JSUtils.clickElementByJS(vendorHomePage.myAccountButton);
+        ReusableMethods.waitFor(4);
 
         // Click the "Store Manager" button
-       JSUtils.clickElementByJS(vendorMyAccountPage.storeManagerIcon);
+        JSUtils.clickElementByJS(vendorMyAccountPage.storeManagerIcon);
 
         //Click the "Products" button
         JSUtils.clickElementByJS(vendorStoreManagerPage.productsIcon);
 
         // Click the "Add New" button
         JSUtils.clickElementByJS(vendorStoreManagerPage.addNewIcon);
-
         ReusableMethods.waitFor(2);
 
         //Click the "Simple Product" dropbox
@@ -216,45 +199,46 @@ public class US_18_TC_01 {
 
         //Verify Simple Product dropbox is selectable
         Assert.assertTrue(vendorStoreManagerPage.simpleProductDropdown.isEnabled());
-
         ReusableMethods.getScreenshot();
 
         //Choose "External/Affiliate Product" option
         select.selectByVisibleText("External/Affiliate Product");
-
         ReusableMethods.waitFor(2);
 
         //Verify External/Affiliate Product option is selectable"
         Assert.assertTrue(vendorStoreManagerPage.simpleProductDropdown.isEnabled());
-
         ReusableMethods.getScreenshot();
 
         //Click the "URL" box
-        vendorStoreManagerPage.urlBox.click();
+        JSUtils.clickElementByJS(vendorStoreManagerPage.urlBox);
 
         //Enter the URL value
         vendorStoreManagerPage.urlBox.sendKeys(faker.internet().url());
 
         //Click the "Button Text" box
-        vendorStoreManagerPage.buttonTextBox.click();
+        JSUtils.clickElementByJS(vendorStoreManagerPage.buttonTextBox);
 
         //Enter the Button Text value
         vendorStoreManagerPage.buttonTextBox.sendKeys(faker.company().buzzword());
 
         //Click the "Price" box
-        vendorStoreManagerPage.priceBox.click();
+        JSUtils.clickElementByJS(vendorStoreManagerPage.priceBox);
 
-        //Enter the Price value
+        //Enter the negative Price value
         vendorStoreManagerPage.priceBox.sendKeys("-50");
 
         //Click the "Sale Price" box
-        vendorStoreManagerPage.salePriceBox.click();
+        JSUtils.clickElementByJS(vendorStoreManagerPage.salePriceBox);
 
-        //Enter the Sale Price value
+        //Enter the negative Sale Price value
         vendorStoreManagerPage.salePriceBox.sendKeys("-30");
 
         //Verify negative Price and Sale Price values should be able to entered as positive in the boxs
         ReusableMethods.getScreenshot();
-
     }
+//    @AfterMethod
+//    public void closeBrowser(){
+//        ReusableMethods.waitFor(3);
+//        Driver.closeDriver();
+//    }
 }
