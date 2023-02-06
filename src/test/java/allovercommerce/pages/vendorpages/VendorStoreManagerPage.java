@@ -92,6 +92,8 @@ public class VendorStoreManagerPage {
     @FindBy(xpath = "//select[@id='product_type']//option")
     public List<WebElement> productTypeOptions;
 
+
+
     @FindBy(xpath = "//input[@id='pro_title']")
     public  WebElement productTitle;
 
@@ -182,6 +184,44 @@ public class VendorStoreManagerPage {
 
     @FindBy(id="is_downloadable")
     public WebElement downloadableCheckBox;
+
+
+
+    @FindBy(id = "product_type")
+    public WebElement productType;
+
+    @FindBy(xpath = "(//div[.='Attributes'])[2]")
+    public WebElement AttributesButton;
+
+    @FindBy(id = "attributes_is_active_1")
+    public WebElement attributesColarCheckBox;
+
+    @FindBy(id = "attributes_is_active_2")
+    public WebElement attributesSizeCheckBox;
+
+
+
+    @FindBy(xpath = "(//input[@class='select2-search__field'])[2]")
+    public WebElement selectColorOptions;
+
+    @FindBy(xpath="(//ul[@class='select2-selection__rendered'])[3]")
+    public WebElement selectSize0ptions;
+
+    @FindBy(xpath = "(//button[@type='button'])[39]")
+    public  WebElement addButtonColor;
+
+    @FindBy(xpath = "(//button[@type='button'])[42]")
+    public  WebElement addButtonSize;
+
+
+    @FindBy(xpath = "(//div[@class='page_collapsible_content_holder'])[6]")
+    public  WebElement variationsButton;
+
+    @FindBy(name = "default_attributes[attribute_pa_color]")
+    public  WebElement anyColorDropdown;
+
+    @FindBy(name = "default_attributes[attribute_pa_size]")
+    public  WebElement anySizeDropdown;
 
 
 
