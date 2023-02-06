@@ -22,17 +22,17 @@ public class US_01_TC_01 {
 
 
     @Test
-    public void testcase_01(){
+    public void testcase_01() {
 //        User goes to https://allovercommerce.com/
         Driver.getDriver().get(ConfigReader.getProperty("allovercommerce_url"));
 //        User click Register link
-        customerHomePage=new CustomerHomePage();
+        customerHomePage = new CustomerHomePage();
 
         ReusableMethods.waitFor(10);
         customerHomePage.customerRegisterIcon.click();
 
 //        User should enter valid username in the Username field
-        Faker faker=new Faker();
+        Faker faker = new Faker();
         ReusableMethods.waitFor(5);
         customerHomePage.registerUsername.sendKeys(faker.name().username());
 //        User should enter valid e-mail address
@@ -59,39 +59,40 @@ public class US_01_TC_01 {
 //        User goes to https://allovercommerce.com/
         Driver.getDriver().get(ConfigReader.getProperty("allovercommerce_url"));
 //        User click Register link
-        customerHomePage=new CustomerHomePage();
-        ReusableMethods.waitFor(10);
+        customerHomePage = new CustomerHomePage();
+        ReusableMethods.waitFor(5);
 
         customerHomePage.customerRegisterIcon.click();
 //        User should enter invalid username in the Username field
         ReusableMethods.waitFor(5);
         customerHomePage.registerUsername.sendKeys(ConfigReader.getProperty("customer_invalid_username"));
 //        User should enter invalid e-mail address
-        ReusableMethods.waitFor(5);
+        ReusableMethods.waitFor(2);
         customerHomePage.registerEmail.sendKeys(ConfigReader.getProperty("customer_invalid_email"));
 //        User should enter invalid password in Password field
-        ReusableMethods.waitFor(5);
+        ReusableMethods.waitFor(2);
         customerHomePage.registerPassword.sendKeys(ConfigReader.getProperty("customer_invalid_password"));
 
 //        User must click on  "I agree to the privacy policy" checkbox
-        ReusableMethods.waitFor(5);
+        ReusableMethods.waitFor(2);
         customerHomePage.agreeCheckbox.click();
 //        User should click on sign up button
-        ReusableMethods.waitFor(5);
+        ReusableMethods.waitFor(2);
         customerHomePage.signUpButton.click();
 //      Error message  should be  like "Please enter a valid account username,email address and password."
-        String errorMessage=customerHomePage.errorMessage.getText();
+        String errorMessage = customerHomePage.errorMessage.getText();
 
-        Assert.assertFalse(false,"Please enter a valid account username ,email address and password.");
+        Assert.assertTrue(false, "Please enter a valid account username ,email address and password.");
 
 
     }
+
     @Test //wrong username
     public void testcase_03() throws IOException {
 //        User goes to https://allovercommerce.com/
         Driver.getDriver().get(ConfigReader.getProperty("allovercommerce_url"));
 //        User click Register link
-        customerHomePage=new CustomerHomePage();
+        customerHomePage = new CustomerHomePage();
         ReusableMethods.waitFor(10);
 
         customerHomePage.customerRegisterIcon.click();
@@ -100,7 +101,7 @@ public class US_01_TC_01 {
         customerHomePage.registerUsername.sendKeys(ConfigReader.getProperty("customer_invalid_username"));
 //        User should enter valid e-mail address
         ReusableMethods.waitFor(5);
-        Faker faker=new Faker();
+        Faker faker = new Faker();
         customerHomePage.registerEmail.sendKeys(faker.internet().emailAddress());
 //        User should enter valid password in Password field
         ReusableMethods.waitFor(5);
@@ -114,9 +115,9 @@ public class US_01_TC_01 {
         customerHomePage.signUpButton.click();
         ReusableMethods.waitFor(5);
 //      Error message  should be  like "Please enter a valid account username."
-        String errorMessage=customerHomePage.errorMessage.getText();
+        String errorMessage = customerHomePage.errorMessage.getText();
 
-        Assert.assertEquals(errorMessage,"Please enter a valid account username.");
+        Assert.assertEquals(errorMessage, "Please enter a valid account username.");
 
 
         //ReusableMethods.getScreenshot("negativeLoginScreenshot2");
@@ -133,12 +134,12 @@ public class US_01_TC_01 {
 //        User goes to https://allovercommerce.com/
         Driver.getDriver().get(ConfigReader.getProperty("allovercommerce_url"));
 //        User click Register link
-        customerHomePage=new CustomerHomePage();
+        customerHomePage = new CustomerHomePage();
         ReusableMethods.waitFor(10);
 
         customerHomePage.customerRegisterIcon.click();
 //        User should enter valid username in the Username field
-        Faker faker=new Faker();
+        Faker faker = new Faker();
         ReusableMethods.waitFor(5);
         customerHomePage.registerUsername.sendKeys(faker.name().username());
 //        User should enter invalid e-mail address
@@ -156,9 +157,9 @@ public class US_01_TC_01 {
         customerHomePage.signUpButton.click();
         ReusableMethods.waitFor(5);
 //      Error message  should be  like "Please enter a valid email address."
-        String errorMessage=customerHomePage.errorMessage.getText();
+        String errorMessage = customerHomePage.errorMessage.getText();
         System.out.println(errorMessage);
-        Assert.assertFalse(false,"Please enter a valid email address.");
+        Assert.assertTrue(false, "Please enter a valid email address.");
 
 
         //ReusableMethods.getScreenshot("negativeLoginScreenshot3"
@@ -167,17 +168,18 @@ public class US_01_TC_01 {
 
 
     }
+
     @Test //wrong password bug
     public void testcase_05() throws IOException {
 //        User goes to https://allovercommerce.com/
         Driver.getDriver().get(ConfigReader.getProperty("allovercommerce_url"));
 //        User click Register link
-        customerHomePage=new CustomerHomePage();
+        customerHomePage = new CustomerHomePage();
         ReusableMethods.waitFor(10);
 
         customerHomePage.customerRegisterIcon.click();
 //        User should enter valid username in the Username field
-        Faker faker=new Faker();
+        Faker faker = new Faker();
         ReusableMethods.waitFor(5);
         customerHomePage.registerUsername.sendKeys(faker.name().username());
 //        User should enter valid e-mail address
@@ -193,13 +195,13 @@ public class US_01_TC_01 {
         ReusableMethods.waitFor(5);
         customerHomePage.signUpButton.click();
 //      Verify the sign out link is not displayed
-        ReusableMethods.verifyElementDisplayed(customerHomePage.signOutButton);
-
+        ReusableMethods.verifyElementNotDisplayed(customerHomePage.signOutButton);
 
 
     }
+
     @AfterMethod
-    public void closeBrowser(){
+    public void closeBrowser() {
         ReusableMethods.waitFor(3);
         Driver.closeDriver();
     }
