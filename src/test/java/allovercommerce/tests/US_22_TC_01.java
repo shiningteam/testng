@@ -8,7 +8,6 @@ import allovercommerce.utilities.ConfigReader;
 import allovercommerce.utilities.Driver;
 import allovercommerce.utilities.JSUtils;
 import allovercommerce.utilities.ReusableMethods;
-import com.github.javafaker.Faker;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

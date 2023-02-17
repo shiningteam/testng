@@ -160,11 +160,18 @@ public class VendorStoreManagerPage {
     @FindBy(xpath = "//button[@id='menu-item-upload']")
     public WebElement upload;
 
-    @FindBy(xpath = "//button[.='Select Files']")
+    @FindBy(xpath = "//button[@class='browser button button-hero']")
     public WebElement selectFiles;
 
-    @FindBy(xpath = "//button[.='Select']")
+    @FindBy(xpath = "//button[@class='button media-button button-primary button-large media-button-select']")
     public WebElement select;
+
+    @FindBy(xpath = "//ul[@id='product_cats_checklist']//li")
+    public List<WebElement> catsCheckList;
+
+    @FindBy(xpath = "//button[@id='menu-item-browse']")
+    public WebElement mediaLibrary;
+
 
 
 
