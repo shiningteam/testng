@@ -7,9 +7,6 @@ import allovercommerce.utilities.Driver;
 import allovercommerce.utilities.JSUtils;
 import allovercommerce.utilities.ReusableMethods;
 import com.github.javafaker.Faker;
-import org.junit.After;
-import org.junit.Before;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -17,12 +14,16 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.io.FileOutputStream;
+import java.awt.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 import static allovercommerce.utilities.JSUtils.clickElementByJS;
@@ -34,7 +35,7 @@ public class US_14_TC_01 {
     Faker faker = new Faker();
     @BeforeMethod
     public void signIn() {
-        //        1- User goes to ''https://allovercommerce.com/''
+//        1- User goes to ''https://allovercommerce.com/''
         Driver.getDriver().get(ConfigReader.getProperty("allovercommerce_url"));
         ReusableMethods.waitFor(3);
 //        2- Click "Sign in" button
@@ -73,58 +74,28 @@ public class US_14_TC_01 {
         Assert.assertTrue(productTypeOptions.contains("Variable Product"));
         Assert.assertTrue(productTypeOptions.contains("Grouped Product"));
         Assert.assertTrue(productTypeOptions.contains("External/Affiliate Product"));
-//        Select select = new Select(VendorStoreManagerPage.productType);
-//        select.selectByIndex(3);
-//        String externalAffiliateProduct = select.getFirstSelectedOption().getText();
-//        Assert.assertEquals(externalAffiliateProduct, "External/Affiliate Product");
-//        ReusableMethods.waitFor(3);
-//
-//
-//        select.selectByIndex(2);
-//        String groupedProduct = select.getFirstSelectedOption().getText();
-//        Assert.assertEquals(groupedProduct, "Grouped Product");
-//        ReusableMethods.waitFor(3);
-//
-//        select.selectByIndex(1);
-//        String variableProduct = select.getFirstSelectedOption().getText();
-//        Assert.assertEquals(variableProduct, "Variable Product");
-//        ReusableMethods.waitFor(3);
-//
-//        select.selectByIndex(0);
-//        String simpleProduct = select.getFirstSelectedOption().getText();
-//        Assert.assertEquals(simpleProduct, "Simple Product");
-//        ReusableMethods.waitFor(3);
+
     }
     @Test
-    public void imageTest() throws IOException {
+    public void imageTest() throws FileNotFoundException {
 //        11- Click on "image" part
+        String pathOfFile = "C:/Users/Merve/Desktop/image.jpeg";
         JSUtils.clickElementByJS(VendorStoreManagerPage.imageButton);
         ReusableMethods.waitFor(3);
 //        12- Click on "Upload files" button
         JSUtils.clickElementByJS(VendorStoreManagerPage.upload);
         ReusableMethods.waitFor(3);
 //        13- Click on "SELECT FILES" button and upload the image
-        String userHOME=System.getProperty("user.home");
-        String pathOfFile = userHOME + "\\Desktop\\image.jpeg";
-//        JSUtils.clickElementByJS(VendorStoreManagerPage.selectFiles);
-        VendorStoreManagerPage.selectFiles.sendKeys(pathOfFile);
+        VendorStoreManagerPage.selectFiles.sendKeys(ConfigReader.getProperty("mylocalpath"));
         ReusableMethods.waitFor(10);
 //        14- Click on "SELECT" button
         JSUtils.clickElementByJS(VendorStoreManagerPage.select);
-        ReusableMethods.waitFor(3);
 //        15- Verify "photo" is uploaded by taking screenshot
-//        URL url = new URL(ConfigReader.getProperty("imageUrl"));
-//        InputStream is = url.openStream();
-//        FileOutputStream fos = new FileOutputStream(ConfigReader.getProperty("localpath"));
-//        byte[] buffer = new byte[4096];
-//        int bytesRead = 0;
-//        while ((bytesRead = is.read(buffer)) != -1) {
-//            fos.write(buffer, 0, bytesRead);
     }
     @Test
     public void descriptionTest() {
 //        16- Enter "Product Title"
-        VendorStoreManagerPage.productTitle.sendKeys("Eyüp Sabri Tuncer");
+        VendorStoreManagerPage.productTitle.sendKeys("Erdali");
         ReusableMethods.waitFor(3);
 
 //        17- Enter "Short Description"
@@ -133,7 +104,7 @@ public class US_14_TC_01 {
         ReusableMethods.waitFor(3);
         Driver.getDriver().switchTo().defaultContent();
 
-//        18- Enter " Description"
+//        18- Enter "Description"
         Driver.getDriver().switchTo().frame(VendorStoreManagerPage.descriptionFrame);
         ReusableMethods.waitFor(3);
         VendorStoreManagerPage.description.sendKeys(ConfigReader.getProperty("description"));
@@ -153,45 +124,54 @@ public class US_14_TC_01 {
         clickElementByJS(VendorStoreManagerPage.addNewCategory);
         ReusableMethods.waitFor(3);
 //        22- Enter "Category Name"
-        VendorStoreManagerPage.categoryName.sendKeys(faker.name().firstName());
+        String categoryName = faker.name().firstName();
+        VendorStoreManagerPage.categoryName.sendKeys(categoryName);
         ReusableMethods.waitFor(3);
 //        23- Select "-Parent category-" from dropdown
-        Select select1 = new Select(VendorStoreManagerPage.categoryParentName);
-        select1.selectByIndex(3);
-        ReusableMethods.waitFor(3);
-//        24- Click "ADD" button
-        clickElementByJS(VendorStoreManagerPage.addCategoryButton);
-        ReusableMethods.waitFor(3);
-//        25- Verify "Scarf" option has added
-        List<WebElement> categoryList = Driver.getDriver().findElements(By.xpath("//ul[@id='product_cats_checklist']//li"));
-        List<String> categoryNameList = new ArrayList<>();
-        for (WebElement w : categoryList) {
-            categoryNameList.add(w.getText());
+//        Select select1 = new Select(VendorStoreManagerPage.categoryParentName);
+//        select1.selectByIndex(3);
+//        ReusableMethods.waitFor(3);
+//        VendorStoreManagerPage.checkboxCategory.click();
+//        List<WebElement> categoryUnderList = Driver.getDriver().findElements(By.xpath("//ul[@id='product_cats_checklist']//li//span"));
+//        for (WebElement w : categoryUnderList) {
+//            w.click();
+//        }
+//        List<WebElement> categoryList = Driver.getDriver().findElements(By.xpath("//ul[@id='product_cats_checklist']//li//input"));
+//        System.out.println(categoryList.size());
+//        for (WebElement x : categoryList) {
+//            x.click();
+//        23- Click "ADD" button
+            clickElementByJS(VendorStoreManagerPage.addCategoryButton);
+            ReusableMethods.waitFor(3);
+//        24- Verify "Categories" is added
+            List<String> categoryNameList = new ArrayList<>();
+            for (WebElement w : VendorStoreManagerPage.catsCheckList) {
+                categoryNameList.add(w.getText());
+            }
+            System.out.println(categoryNameList);
+            Assert.assertEquals(categoryName, categoryNameList.get(0));
+            ReusableMethods.waitFor(3);
         }
-        System.out.println(categoryNameList);
-//        Assert.assertTrue(categoryNameList.contains(faker.name().firstName()));
-        ReusableMethods.waitFor(3);
-    }
 
     @Test
     public void productTest() {
-//        26- Verify "Product brands" options are selectable.
+//        25- Verify "Product brands" options are selectable.
         scrollIntoViewJS(VendorStoreManagerPage.shortDescriptionText);
         clickElementByJS(VendorStoreManagerPage.checkboxBrand);
         ReusableMethods.waitFor(3);
 //            Assert.assertTrue(VendorStoreManagerPage.checkboxBrand.isSelected());
-//        27- Click on "+Add new Product brands"
+//        26- Click on "+Add new Product brands"
         clickElementByJS(VendorStoreManagerPage.addBrandName);
         ReusableMethods.waitFor(3);
         Assert.assertTrue(VendorStoreManagerPage.checkboxBrand.isSelected());
-//        28- Enter "Product brands Name"
+//        27- Enter "Product brands Name"
         VendorStoreManagerPage.brandName.sendKeys(faker.company().name());
         ReusableMethods.waitFor(3);
-//        23- Select "-Parent category-" from dropdown
-        Select select2 = new Select(VendorStoreManagerPage.brandParentName);
-        select2.selectByIndex(1);
-        ReusableMethods.waitFor(3);
-//        29- Click "ADD" button
+////        23- Select "-Parent category-" from dropdown
+//        Select select2 = new Select(VendorStoreManagerPage.brandParentName);
+//        select2.selectByIndex(1);
+//        ReusableMethods.waitFor(3);
+//        28- Click "ADD" button
         clickElementByJS(VendorStoreManagerPage.addBrandButton);
         ReusableMethods.waitFor(3);
 //        30- Verify "Product brands" is added
@@ -202,9 +182,10 @@ public class US_14_TC_01 {
     public void tagsTest() {
 //        31- Enter "Tags"
         scrollIntoViewJS(VendorStoreManagerPage.tagText);
-        VendorStoreManagerPage.tagName.sendKeys("#women");
+        VendorStoreManagerPage.tagName.sendKeys("#olaylarolaylar");
         ReusableMethods.waitFor(3);
     }
+
 
     @Test
     public void catalogVisibility() {
@@ -228,10 +209,10 @@ public class US_14_TC_01 {
             Assert.assertEquals(searchResultsOnly, "Search results only");
             ReusableMethods.waitFor(3);
 
-        select3.selectByIndex(3);
-        String hidden = select3.getFirstSelectedOption().getText();
-        Assert.assertEquals(hidden, "Hidden");
-        ReusableMethods.waitFor(3);
+            select3.selectByIndex(3);
+            String hidden = select3.getFirstSelectedOption().getText();
+            Assert.assertEquals(hidden, "Hidden");
+            ReusableMethods.waitFor(3);
     }
 //    @AfterMethod
 //    public void closeBrowser(){
@@ -268,3 +249,25 @@ public class US_14_TC_01 {
 //        Assert.assertTrue(catalogVisibilityOptions.contains("Shop only"));
 //        Assert.assertTrue(catalogVisibilityOptions.contains("Search results only"));
 //        Assert.assertTrue(catalogVisibilityOptions.contains("Hidden"));
+
+//        Select select = new Select(VendorStoreManagerPage.productType);
+//        select.selectByIndex(3);
+//        String externalAffiliateProduct = select.getFirstSelectedOption().getText();
+//        Assert.assertEquals(externalAffiliateProduct, "External/Affiliate Product");
+//        ReusableMethods.waitFor(3);
+//
+//
+//        select.selectByIndex(2);
+//        String groupedProduct = select.getFirstSelectedOption().getText();
+//        Assert.assertEquals(groupedProduct, "Grouped Product");
+//        ReusableMethods.waitFor(3);
+//
+//        select.selectByIndex(1);
+//        String variableProduct = select.getFirstSelectedOption().getText();
+//        Assert.assertEquals(variableProduct, "Variable Product");
+//        ReusableMethods.waitFor(3);
+//
+//        select.selectByIndex(0);
+//        String simpleProduct = select.getFirstSelectedOption().getText();
+//        Assert.assertEquals(simpleProduct, "Simple Product");
+//        ReusableMethods.waitFor(3);
